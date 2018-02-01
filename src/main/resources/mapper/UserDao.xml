@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--为DAO接口提供sql语句方法-->
+<mapper namespace="com.shop.dao.UserDao">
+  <select id="selusername" resultType="user">
+        select
+        *
+        from user
+        where username=#{username}
+
+    </select>
+    <select id="queryAll" resultType="user">
+        select
+        *
+        from user
+  </select>
+   <insert id="insertUser">
+    insert ignore into user(username,password)
+    value(#{username},#{password})
+ </insert>
+    <update id="updateUser">
+        update user set
+        password=#{password}
+        where username=#{username}
+    </update>
+</mapper>
+

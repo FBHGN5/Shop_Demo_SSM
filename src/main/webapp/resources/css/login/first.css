@@ -1,0 +1,123 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  width:1900px;
+}
+#box{
+  width:2200px;
+  height:800px;
+  overflow:hidden;
+  position: absolute;
+  top:80px;
+  left:-300px;
+
+
+}
+#user{
+  width: 350px;
+  height:440px;
+  background: #fff;
+  position: absolute;
+  top:90px;
+  left:1600px;
+  opacity: 0.9;
+
+}
+strong{
+  font-family: "Microsoft YaHei";
+}
+#user1{
+  position: absolute;
+  top:80px;
+  left:20px;
+}
+::-webkit-input-placeholder {
+  font-size:13px;
+
+}
+:-moz-placeholder {/* Firefox 18- */
+
+  font-size: 15px;
+}
+::-moz-placeholder{/* Firefox 19+ */
+  font-size: 15px;
+}
+:-ms-input-placeholder {
+  font-size: 15px;
+  } /* 为了保持兼容性使用所有修改方法 */
+
+  #link{position: absolute;top:740px;left:500px;}
+  a{text-decoration: none;color: #090808;margin-right:4px;font-family:"Microsoft YaHei";}
+  a:hover{text-decoration:underline;}
+  .iconfont{width: 40px;height:42px;display: block;float: left;}
+#text{width:400px; height: 62px;}
+#cc{width:400px; height: 62px;}
+  .but{width:150px;font-size:20px;color:#fff;background:#D93A12;padding: 10px 40px;margin: 140px 5px;cursor: pointer;border-radius:5px;border:0px;}
+  .but:hover{background:#B91A0C;}
+
+#checkup{
+  position: absolute;
+  top:240px;
+  left:20px;
+}
+  #cs{
+    width:250px;
+    font-size:20px;
+    color:#000;
+    position: absolute;
+    top:20px;left:150px;top:80px;
+    cursor: pointer;
+  }
+  #cs:hover{
+    font-size: 22px;
+    font-weight:bold;
+    text-decoration: underline;
+  }
+  #title{
+    font-size:50px;
+    font-weight: bold;
+    font-style: oblique;
+    padding:auto;
+    color:#2350AD;
+    width:125px;
+    height:60px;
+    background-image: url(/resources/img/CAP.jpg);
+    margin: 5px 15px;
+  }
+  #pic{
+    font-family:"Microsoft YaHei";
+    font-size:50px;
+    font-style: italic;
+    opacity:0.5;
+    color:rgba(255, 2, 2, 0.98);
+
+  }
+.common{
+  width:250px;
+  height:20px;
+  color:red;
+  font-size: 15px;
+  border: 1px;
+  font-family: "Microsoft YaHei";
+  text-align: left;
+
+}
+#noexist{
+  position:relative;
+  top:-20px;
+  left:40px;
+}
+#error{
+  position:relative;
+  top:2px;
+
+}
+#code{
+  position:relative;
+  left:138px;
+}
+p{
+  display: none;
+}

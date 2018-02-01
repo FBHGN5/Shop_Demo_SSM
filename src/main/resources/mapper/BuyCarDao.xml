@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--为DAO接口提供sql语句方法-->
+<mapper namespace="com.shop.dao.BuyCarDao">
+     <insert id="insertBuyCar">
+        insert into buycar(img,name,price,username,number)
+        value(#{img},#{name},#{price},#{username},#{number})
+
+    </insert>
+    <select id="queryAll" resultType="BuyCar">
+        select*
+        from buycar
+        where username=#{username}
+    </select>
+    <delete id="delete">
+        delete from buycar where id=#{id}
+    </delete>
+</mapper>
+

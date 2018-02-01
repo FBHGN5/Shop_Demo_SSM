@@ -1,0 +1,108 @@
+#top{
+  width:1921px;
+  height:30px;
+  background-color:#e3e4e5;
+  line-height:30px;
+  position:absolute;
+  margin:0 auto;
+  overflow:hidden;
+  z-index:9999;
+}
+.thi{
+  width:580px;
+}
+#ulli{
+  position:absolute;
+  right:483px;
+  font-size:15px;
+  z-index:999;
+}
+#ulli ul li {margin:auto 6px;float:right;}
+#ulli ul li a{color:#666;}
+#ulli ul li a:hover{color:red;}
+#shouye{
+  font-size:15px;
+  color:#666;
+}
+#shouye:hover{
+  color:red;
+  text-decoration:underline;
+}
+#img{
+  width:100%;
+  position:absolute;
+  left:445px;
+
+}
+#title{
+  width:242px;
+  height:20px;
+  position: absolute;
+  top:70px;
+}
+#buytext{
+  position: absolute;
+  top:31px;
+  left:140px;
+}
+a{
+  text-decoration: none;
+  color:#3A3333;
+}
+a:hover{
+  text-decoration: underline;
+
+}
+#under{
+  width:1919px;
+  height:276px;
+  background-color:#FF8787;
+  
+  overflow:hidden;
+}
+
+dt{
+  font-weight: 700;
+  font-size: 15px;
+  color: #777;
+  height: 22px;
+  display:block; 
+  margin:0px 0px 10px 1px;
+}
+dd{
+  font-size: 14px;
+}
+#fir{
+
+  width:900px;
+  height:50px;
+  margin:20px auto;
+
+} 
+.fl{
+  margin:10px 48px;
+  float:left;
+  line-height:30px;
+}
+#empty{
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: 200px;
+    left: 850px;
+    font-size: 14px;
+    display:none;
+}
+#empty ul li{
+  position: relative;
+    top: -58px;
+    left: 100px;
+}
+#bsm{
+  color:red;
+
+}
+/*#bc{
+  position:absolute;
+  left:-800px;
+}*/
