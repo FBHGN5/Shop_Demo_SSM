@@ -12,11 +12,17 @@ html,body{
     top: 60px;
     left: 25px;
 }
+.son_check :hover{
+    cursor: pointer;
+}
 .whole_check{
     position:relative;
     left:-10px;
     width:17px;
     height:17px;
+}
+.whole_check:hover{
+    cursor: pointer;
 }
 
 a:hover{
@@ -96,6 +102,7 @@ a:hover{
     left: -20px;
     top: -20px;
 }
+
 .cartBox .shop_info .all_check .shop{
     position: absolute;
     top:13px;

@@ -34,6 +34,10 @@ $(function () {
                         setInterval(goto,1500);
                         $("#box1").hide(300);
                }
+               else if(result==2)
+                    {
+                        $.Pop('原密码和新密码不能相同！', {Animation: 'layer-rollIn'});
+                    }
                     else{
                         $.Pop('你的原密码输入错误！', {Animation: 'layer-rollIn'});
                     }

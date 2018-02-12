@@ -102,7 +102,34 @@ dd{
   color:red;
 
 }
-/*#bc{
-  position:absolute;
-  left:-800px;
-}*/
+#delsome{
+  height: 50px;
+  background: -webkit-linear-gradient(left, #F52323 , #FDA910); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #F52323 , #FDA910); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #F52323 , #FDA910); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #F52323 , #FDA910); /* 标准的语法 */
+}
+#sub{
+  background-color: #FF451A;
+  width: 90px;
+  height: 49px;
+  border-radius: 5px;
+  border: 0;
+  outline: #B61D1D;
+  color: #FFF;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.kucun{
+  position: relative;
+  top: 26px;
+  color: red;
+  font-size: 15px;
+  width: 92px;
+  height: 40px;
+  background-color: #FFC6C6;
+  border-radius: 6px;
+  text-align: left;
+  line-height: 20px;
+  display:none;
+}

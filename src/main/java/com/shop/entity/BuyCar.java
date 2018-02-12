@@ -1,12 +1,24 @@
 package com.shop.entity;
 
+import java.util.Date;
+
 public class BuyCar {
     private String img;
     private String name;
     private int price;
     private int number;
-    private String creatTime;
+    private Date createTime;
+    private String username;
     private int id;
+    private int kucun;
+
+    public int getKucun() {
+        return kucun;
+    }
+
+    public void setKucun(int kucun) {
+        this.kucun = kucun;
+    }
 
     public int getId() {
         return id;
@@ -14,6 +26,24 @@ public class BuyCar {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private int hotid;
+
+    public int getHotid() {
+        return hotid;
+    }
+
+    public void setHotid(int hotid) {
+        this.hotid = hotid;
     }
 
     public String getImg() {
@@ -48,12 +78,12 @@ public class BuyCar {
         this.number = number;
     }
 
-    public String getCreatTime() {
-        return creatTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(String creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @Override
@@ -63,8 +93,11 @@ public class BuyCar {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", number=" + number +
-                ", creatTime='" + creatTime + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", username='" + username + '\'' +
                 ", id=" + id +
+                ", kucun=" + kucun +
+                ", hotid=" + hotid +
                 '}';
     }
 }

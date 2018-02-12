@@ -5,17 +5,66 @@
 <!--为DAO接口提供sql语句方法-->
 <mapper namespace="com.shop.dao.BuyCarDao">
      <insert id="insertBuyCar">
-        insert into buycar(img,name,price,username,number)
-        value(#{img},#{name},#{price},#{username},#{number})
-
+        insert ignore  into buycar(img,name,price,username,number,hotid,kucun)
+        value(#{img},#{name},#{price},#{username},#{number},#{id},#{kucun})
     </insert>
     <select id="queryAll" resultType="BuyCar">
         select*
         from buycar
         where username=#{username}
     </select>
+    <select id="queryAllb" resultType="BuyCar">
+        select*
+        from buycar
+
+    </select>
+    <select id="queryAll1" resultType="java.lang.Integer">
+        select count(*)
+        from buycar
+
+    </select>
     <delete id="delete">
         delete from buycar where id=#{id}
     </delete>
+    <delete id="deleteCheckBox" parameterType="int">
+        delete
+        from
+        buycar
+        where
+        <foreach item="id" collection="array" open="id in ("
+                 separator="," close=")">
+            #{id}
+        </foreach>
+
+    </delete>
+    <update id="decrease">
+       update
+       buycar
+       set
+       number=number+#{number}
+       where username=#{username}
+       and name=#{name}
+    </update>
+    <select id="select" resultType="BuyCar">
+        select
+        *from
+        buycar
+        where id=#{id}
+    </select>
+    <select id="selectu" resultType="BuyCar">
+        select
+        *from
+        buycar
+        where username=#{username}
+        and name=#{name}
+    </select>
+    <update id="update">
+        update
+        buycar
+        set
+        number=#{number}
+        where
+        id=#{id}
+    </update>
 </mapper>
 

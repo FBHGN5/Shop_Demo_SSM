@@ -6,6 +6,15 @@ public class User {
     private String username;
     private String password;
     private Date createTime;
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     public Date getCreateTime() {
         return createTime;
@@ -37,6 +46,7 @@ public class User {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", createTime=" + createTime +
+                ", state=" + state +
                 '}';
     }
 }

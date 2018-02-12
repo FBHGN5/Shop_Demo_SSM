@@ -22,6 +22,22 @@
         set
         number = number - #{num}
         where id= #{id}
+        and number >= 0
     </update>
+    <update id="update">
+        update
+        hotsale
+        set
+        price=#{price},
+        number=#{number}
+        where id= #{id}
+
+    </update>
+    <!--<update id="update">-->
+      <!--update hotsale-->
+      <!--set-->
+      <!--number=#{num}-->
+      <!--where name=#{name,jdbcType=VARCHAR}-->
+    <!--</update>-->
 </mapper>
 

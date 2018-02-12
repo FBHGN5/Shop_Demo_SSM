@@ -4,7 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 配置需要被Spring管理的Bean（创建，创建后放在了Spring IOC容器里面）-->
     <!--spring整合mybatis-->
     <context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="NEVER" />
@@ -38,7 +39,7 @@
         <!-- 扫描SQL配置文件 即mapper目录下的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
 </bean>
-    <!-- 配置扫描DAO接口包 动态实现DAO接口并注入到Spring容器中 -->
+        <!-- 配置扫描DAO接口包 动态实现DAO接口并注入到Spring容器中 -->
         <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>

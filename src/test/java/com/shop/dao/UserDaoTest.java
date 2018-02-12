@@ -47,4 +47,9 @@ public class UserDaoTest {
     public void updateUser() {
         int count=userDao.updateUser("123456","1234");
     }
+
+    @Test
+    public void updateUser2() {
+        userDao.updateUser2("123456","12");
+    }
 }

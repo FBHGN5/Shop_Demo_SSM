@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
@@ -12,11 +12,20 @@
     <link rel="stylesheet" href="/resources/css/buycar/reset.css">
     <link rel="stylesheet" href="/resources/css/buycar/carts.css">
     <link rel="stylesheet" href="/resources/css/buycar/buycar.css ">
-    <script src="/resources/js/buycar/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/common/plug-in.js"></script>
+    <script src="/resources/js/common/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+       $("#clear").click(function () {
+                alert("购买成功！")
+                window.document.f.action="/shop/clearing";
+                window.document.f.submit();
 
+            }) ;
+
+        });
+  </script>
 </head>
-<body>
+
  <div id="all">  <div id="top">
     <div id="ulli"><ul>
       <li><a href="#">客户服务</a>&nbsp;&nbsp;|</li>
@@ -53,22 +62,26 @@
             <div class="shop_info">
                 <div class="all_check" style="display:none">
                     <!--店铺全选-->
-                    <input type="checkbox"  class="shopChoice">
+                    <input type="checkbox"  class="shopChoice" >
                     
                 </div>
                
             </div>
 
             <div class="order_content">
+                <form name="f" method="post" action="" target="hidden">
     <c:forEach var="list" items="${list}">
+
         <ul class="order_lists">
+
                     <li class="list_chk">
-                        <input type="checkbox"  class="son_check">
-                        
-                    </li>
+                        <input type="checkbox" name="check" value="${list.id}"  class="son_check">
+                </li>
                     <li class="list_con">
                         <div class="list_img"><a href="javascript:;"><img src="${list.img}" alt=""></a></div>
-                        <div class="list_text"><a href="javascript:;">${list.name}</a></div>
+                        <div class="list_text"><a href="/shop/wupin?id=${list.hotid}">${list.name}</a>
+                            <input type="hidden" name="name" value="${list.name}">
+                        </div>
                     </li>
                     <li class="list_info">
                         <p>规格：默认</p>
@@ -80,8 +93,10 @@
                     <li class="list_amount">
                         <div class="amount_box">
                             <a href="javascript:;" class="reduce reSty">-</a>
-                            <input type="text" value="${list.number}" class="sum">
+                            <input type="text" value="${list.number}" name="number" class="sum">
                             <a href="javascript:;" class="plus">+</a>
+                            <input type="hidden" value="${list.kucun}" class="kucun">
+                            <div class="kucun"></div>
                         </div>
                     </li>
                     <li class="list_sum">
@@ -89,12 +104,14 @@
                     </li>
                     <li class="list_op">
                         <p class="del"><a href="javascript:;" class="delBtn">移除商品</a>
-                            <input type="hidden" id="delid" value="${list.id}"></p>
+                            <input id="sl1" type="hidden" name="id"  value="${list.id}">
+                            <%--<input id="sl2" type="hidden"  value="${list.name}">--%>
+                            <%--<input id="sl3" type="hidden"  value="${list.number}">--%>
+                        </p>
                     </li>
                 </ul>
                 </c:forEach>
-
-
+                    <div id="delsome"><input id="sub" type="button" value="移除选中商品"></div>
             </div>
     </div>
 
@@ -103,9 +120,12 @@
             <div class="bar-right">
                 <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
                 <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
-                <div class="calBtn"><a href="javascript:;">结算</a></div>
+                <div class="calBtn">
+                    <a href="javascript:;" id="clear">结算</a>
+               </div></div>
             </div>
         </div>
+
     </section>
     <section class="model_bg"></section>
     <section class="my_model">
@@ -120,7 +140,7 @@
                 <img id="bc" src="/resources/img/bigcar.png">
                 <li>购物车内暂时没有商品</li>
                 <br>
-                <li><a id="bsm" href="#">去购物<</a></li>
+                <li><a id="bsm" href="/shop/shouye">去购物<</a></li>
               </ul>
          </div>
     <div id="under">
@@ -168,7 +188,10 @@
                 </div> </div></div>
            </div>
             </div>
-
-            <iframe name="hidden" id="hidden" style="display:none">
+ <input type="hidden" id="del" value="">
+<input type="hidden" name="username" value="${sessionScope.username}">
+ <%--<input type="hidden" id="name" value="">--%>
+ <%--<input type="hidden" id="num" value="">--%>
+            <iframe name="hidden" id="hidden" style="display:none" target="hidden">
 </body>
 </html>

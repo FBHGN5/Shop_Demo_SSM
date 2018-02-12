@@ -67,9 +67,9 @@
 <p>增值业务：礼品包装</p></div>
 <p>库存数量：<div id="bor">仅剩<em id="cc" style="font-style:normal;">${hotsale.number}</em>件
       </div>
-    <p id="shul">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 量：<div id="leijia"><div id="input"><input type="button" class="but" name="zeng" value="+" onclick="rec()" style="cursor: pointer;">
+    <p id="shul">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 量：<div id="leijia"><div id="input"><input type="button" class="but" name="jian" value="-" onclick="dun()" style="cursor: pointer;">
     <input type="text" id="cc1" class="but" value="1">
-    <input type="button" class="but" name="jian" value="-" onclick="dun()" style="cursor: pointer;"></p></div></div>
+   <input type="button" class="but" name="zeng" value="+" onclick="rec()" style="cursor: pointer;"></p></div></div>
  <div><input id="add" type="button" value="加入购物车"></div>
  <p id="tishi">温馨提示：
 支持7天无理由退货</p>

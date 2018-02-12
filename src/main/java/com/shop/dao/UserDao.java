@@ -12,5 +12,8 @@ public interface UserDao {
     User selusername(String username);
     int insertUser(@Param("username") String username, @Param("password") String password);
     int updateUser(@Param("username") String username,@Param("password") String password);
+    int updateUser2(@Param("username") String username,@Param("password") String password);
+    int update(String username);
+    int update2(String username);
     List<User> queryAll();
 }

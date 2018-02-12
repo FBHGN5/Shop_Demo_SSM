@@ -3,7 +3,23 @@
  */
 
 $(document).ready(function () {
+    /*
+    判断是否超库存
+     */
+    $(".sum").bind('input propertychange', function() {
+        var i=parseInt($(this).val());
+        var j=parseInt($(this).siblings("input").val());
+        if(i>j)
+        {
 
+            $(this).val($(this).siblings("input").val());
+            $(this).siblings("div").html("该商品最多购买"+$(this).siblings("input").val()+"件");
+            $(this).siblings("div").show(300);
+        }
+        else{
+            $(this).siblings("div").hide(300);
+        }
+    })
     fun();
     //全局的checkbox选中和未选中的样式
     var $allCheckbox = $('input[type="checkbox"]'),     //全局的全部checkbox
@@ -134,19 +150,32 @@ $(document).ready(function () {
             $count = parseInt($inputVal.val())+1,
             $obj = $(this).parents('.amount_box').find('.reduce'),
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
-            $price = $(this).parents('.order_lists').find('.price').html(),  //单价
-            $priceTotal = $count*parseInt($price.substring(1));
-        $inputVal.val($count);
-        $priceTotalObj.html('￥'+$priceTotal);
-        if($inputVal.val()>1 && $obj.hasClass('reSty')){
-            $obj.removeClass('reSty');
+            $price = $(this).parents('.order_lists').find('.price').html();  //单价
+        if($inputVal.val()>=parseInt($(this).siblings("input:hidden").val()))
+        {
+            $(this).val($(this).siblings("input").val());
+            $(this).siblings("div").html("该商品最多购买"+$(this).siblings("input").val()+"件");
+            $(this).siblings("div").show(300);
         }
-        totalMoney();
+        else{
+            var $priceTotal = $count*parseInt($price.substring(1));
+            $inputVal.val($count);
+            $priceTotalObj.html('￥'+$priceTotal);
+            if($inputVal.val()>1 && $obj.hasClass('reSty')){
+                $obj.removeClass('reSty');
+            }
+
+            totalMoney();
+        }
     });
 
     $reduce.click(function () {
-        var $inputVal = $(this).next('input'),
-            $count = parseInt($inputVal.val())-1,
+        var $inputVal = $(this).next('input');
+        if($inputVal.val()==parseInt($(this).siblings("input:hidden").val()))
+        {
+            $(this).siblings("div").hide (300);
+        }
+        var $count = parseInt($inputVal.val())-1,
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = $count*parseInt($price.substring(1));
@@ -186,6 +215,9 @@ $(document).ready(function () {
         $order_content = $order_lists.parents('.order_content');
         $('.model_bg').fadeIn(300);
         $('.my_model').fadeIn(300);
+        $("#del").val($(this).siblings("#sl1").val());
+        // $("#name").val($(this).siblings("#sl2").val());
+        // $("#num").val($(this).siblings("#sl3").val());
     });
 
     //关闭模态框
@@ -200,31 +232,39 @@ $(document).ready(function () {
         $('.my_model').fadeOut(300);
     }
     function fun() {
-        if($(".order_lists").length==1)
+        if($(".order_lists").length<=1)
         {
             $("#empty").show(400);
         }
+    }
+    $("#sub").click(function () {
+        $(":checked").parent().parent().fadeOut("show");
+        window.document.f.action="/shop/delcheck";
+        window.document.f.submit();
+         setInterval(goto,500);
+    });
+    function goto() {
+        window.location.reload();
     }
     //确定按钮，移除商品
     $('.dialog-sure').click(function () {
         $order_lists.remove();
         if($order_content.html().trim() == null || $order_content.html().trim().length == 0){
             $order_content.parents('.cartBox').remove();
-            $("#empty").show(400);
-        }
+            }
+            fun();
         closeM();
         $sonCheckBox = $('.son_check');
         totalMoney();
         /*
         后台删除
          */
-        console.log(parseInt($("#delid").val()));
-        $.ajax({
+ $.ajax({
             type: "POST",
             async:true,
             url: "/shop/del",
             dataType: "json",
-            data: {"id":parseInt($("#delid").val())-1}
+            data: {"id":parseInt($("#del").val())}
             // 这里是控制器返回值
             /*result是后台返回值*/
             });

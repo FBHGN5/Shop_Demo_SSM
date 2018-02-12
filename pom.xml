@@ -51,7 +51,7 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.2.3</version>
     </dependency>
-    <!--Servlet web相关依赖-->
+    <!--Servlet web相关依赖el表达式-->
     <dependency>
       <groupId>taglibs</groupId>
       <artifactId>standard</artifactId>

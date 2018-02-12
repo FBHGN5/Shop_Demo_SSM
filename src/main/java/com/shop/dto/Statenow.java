@@ -4,6 +4,7 @@ public class Statenow {
     private String state;
 
 
+
     public Statenow(String state) {
         this.state = state;
     }

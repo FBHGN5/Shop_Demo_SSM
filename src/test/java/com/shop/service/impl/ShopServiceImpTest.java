@@ -1,9 +1,9 @@
 package com.shop.service.impl;
 
 
+import com.shop.dao.BuyCarDao;
 import com.shop.dto.Mod;
 import com.shop.dto.Reg;
-import com.shop.dto.Statenow;
 import com.shop.entity.BuyCar;
 import com.shop.entity.HotSale;
 import com.shop.entity.User;
@@ -25,10 +25,12 @@ public class ShopServiceImpTest {
     private final Logger logger= LoggerFactory.getLogger(this.getClass());
     @Resource
     private ShopService shopService;
+    @Resource
+    private BuyCarDao buyCarDao;
     @Test
     public void login() {
-      Statenow statenow= shopService.login("123456","1234");
-        System.out.println(statenow);
+
+
     }
 
 
@@ -63,11 +65,30 @@ public class ShopServiceImpTest {
         System.out.println(hotSale);
     }
 
+
     @Test
-    public void insert() {
-        int insert=shopService.buy("1","2",1,"3",1,1,1);
-        System.out.println(insert);
+    public void buy() {
+        shopService.buy("1","2",1,"2",1,1,1);
+
     }
 
+    @Test
+    public void reduceNumber() {
+        int[] id={1,2};
+        int[] num=new int[id.length];
+        for (int i=0;i<id.length;i++)
+        {
+            BuyCar buyCar= buyCarDao.select(id[i]);
+            num[i]=buyCar.getNumber();
+        }
+        shopService.reduceNumber(id,num);
+    }
 
+    @Test
+    public void insertOrder() {
+        int checkid[]={1,4};
+        String username="1";
+        shopService.insertOrder(username,checkid);
+
+    }
 }

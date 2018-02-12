@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit Spring配置文件的位置
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
@@ -30,8 +29,25 @@ public class HotSaleDaoTest {
     }
 
     @Test
-    public void reduceNumber() {
-        int id=1;
-        int up=hotSaleDao.reduceNumber(id,2);
+    public void update() {
+        hotSaleDao.update(1,1,1);
     }
+
+//    @Test
+//    public void reduceNumber() {
+//        int id=1;
+//        int up=hotSaleDao.reduceNumber(id,2);
+//    }
+//
+//    @Test
+//    public void update() {
+//       String[] name={"1"};
+//        int num[]={10};
+//        for(int i=0;i<num.length;i++)
+//        {
+//           hotSaleDao.update(name[i],num[i]);
+//      }
+//    }
+
+
 }

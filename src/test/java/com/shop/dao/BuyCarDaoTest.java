@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit Spring配置文件的位置
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
@@ -19,7 +18,7 @@ public class BuyCarDaoTest {
     private BuyCarDao buyCarDao;
     @Test
     public void insertBuyCar() {
-        int i=buyCarDao.insertBuyCar("!","1",1,"1",1);
+
     }
 
     @Test
@@ -31,5 +30,28 @@ public class BuyCarDaoTest {
     @Test
     public void delete() {
         int i=buyCarDao.delete(1);
+    }
+
+    @Test
+    public void deleteCheckBox() {
+        int[] id={3,6};
+        int i=buyCarDao.deleteCheckBox(id);
+    }
+
+
+    @Test
+    public void selectu() {
+        BuyCar buyCar=buyCarDao.selectu("2","1");
+    }
+
+    @Test
+    public void select() {
+        BuyCar buyCar=buyCarDao.select(1);
+    }
+
+    @Test
+    public void queryAll1() {
+        int buycar=buyCarDao.queryAll1();
+        System.out.println(buycar);
     }
 }

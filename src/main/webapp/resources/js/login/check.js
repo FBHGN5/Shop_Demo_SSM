@@ -78,9 +78,13 @@ success: function (result) {
 
          }
          else if(result==3){
+             $.Pop('你的账户已被管理员封停！',{Animation:'layer-rollIn'});
              generateBig();
              img();
-
+          }
+         else if(result==-1)
+         {
+             window.location.href="/shop/admin";
          }
         },
        error: function(request) {
@@ -93,12 +97,19 @@ recdd.onclick=function(){
   img();
 generateBig();
 }
+var index=1;
 function img() {
+    if(index==5)
+    {
+        index=0;
+    }
     var title=document.getElementById("title");
-    var  img=["/resources/img/bg01.png","/resources/img/bg02.png","/resources/img/bg03.png","/resources/img/bg04.png"];
-    var index=Math.floor(Math.random()*img.length);//0到1随机数不包括1
+    var  img=["/resources/img/CAP.jpg","/resources/img/bg01.png","/resources/img/bg02.png","/resources/img/bg03.png","/resources/img/bg04.png"];
+    // var index=Math.floor(Math.random()*img.length);//0到1随机数不包括1
+
     var e=img[index];
     title.style.backgroundImage="url("+e+")";
+    index++
 }
 function charcode() {
 var text=document.getElementById("cc");

@@ -152,11 +152,17 @@ recdd.onclick=function(){
     img();
 generateBig();
 }
+var index=1;
 function img() {
+    if(index==5)
+    {
+        index=0;
+    }
     var title=document.getElementById("title");
-    var  img=["/resources/img/bg01.png","/resources/img/bg02.png","/resources/img/bg03.png","/resources/img/bg04.png"];
-    var index=Math.floor(Math.random()*img.length);//0到1随机数不包括1
-    var e=img[index];
+    var  img=["/resources/img/bg01.png","/resources/img/bg02.png","/resources/img/bg03.png","/resources/img/bg04.png","/resources/img/CAP.jpg"];
+    // var index=Math.floor(Math.random()*img.length);//0到1随机数不包括1
+     var e=img[index];
     title.style.backgroundImage="url("+e+")";
+    index++
 }
 }
