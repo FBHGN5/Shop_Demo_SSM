@@ -16,9 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.List;
 
 
@@ -28,22 +33,22 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private ShopService shopService;
-   @Autowired
+    @Autowired
     private BuyCarDao buyCarDao;
-/*
-登陆验证
- */
+
+    /*
+    登陆验证
+     */
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
     public int check(@RequestParam("username") String username,
                      @RequestParam("password") String password, Model model, HttpSession session) {
 
-      int result=shopService.login(username,password);
-      if(result==-1||result==0)
-      {
-          session.setAttribute("username",username);
-      }
-      System.out.println("用户状态：0登录成功，1账户错误，2密码错误,3封号.现在状态:" + result);
+        int result = shopService.login(username, password);
+        if (result == -1 || result == 0) {
+            session.setAttribute("username", username);
+        }
+        System.out.println("用户状态：0登录成功，1账户错误，2密码错误,3封号.现在状态:" + result);
         return result;
     }
 
@@ -104,12 +109,9 @@ public class UserController {
         System.out.println("old=" + old + "password=" + password);
         if (mod.getResult().equals("success")) {
             return 0;
-        }
-        else if(mod.getResult().equals("same"))
-        {
+        } else if (mod.getResult().equals("same")) {
             return 2;
-        }
-        else {
+        } else {
             return 1;
         }
 
@@ -118,8 +120,7 @@ public class UserController {
     @RequestMapping(value = "/wupin", method = RequestMethod.GET)
     public String Wupin(Model model, @RequestParam("id") int id) {
         HotSale hotSale = shopService.getById(id);
-        if(hotSale==null)
-        {
+        if (hotSale == null) {
             return "redirect:/shop/shouye";
         }
         model.addAttribute("hotsale", hotSale);
@@ -133,20 +134,19 @@ public class UserController {
     @ResponseBody
     public int Buy(Model model, @RequestParam("img") String img, @RequestParam("name") String name,
                    @RequestParam("price") int price, @RequestParam("username") String username
-            , @RequestParam("number") int number,@RequestParam("id") int id,@RequestParam("kucun") int kucun) {
-        int i = shopService.buy(img,name,price, username,number,id,kucun);
+            , @RequestParam("number") int number, @RequestParam("id") int id, @RequestParam("kucun") int kucun) {
+        int i = shopService.buy(img, name, price, username, number, id, kucun);
         System.out.println("购买成功");
         return i;
     }
 
-  @RequestMapping(value = "/buycar", method = RequestMethod.POST)
+    @RequestMapping(value = "/buycar", method = RequestMethod.POST)
 
-    public String Buycar(Model model,@RequestParam("username")String username,HttpSession session) {
-      if(session.getAttribute("username")==null)
-      {
-          return "login";
-      }
-        List<BuyCar> list =shopService.buycar(username);
+    public String Buycar(Model model, @RequestParam("username") String username, HttpSession session) {
+        if (session.getAttribute("username") == null) {
+            return "login";
+        }
+        List<BuyCar> list = shopService.buycar(username);
         model.addAttribute("list", list);
         return "buycar";
     }
@@ -156,42 +156,43 @@ public class UserController {
      */
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     @ResponseBody
-    public void Buycar(Model model,@RequestParam("id")int id) {
+    public void Buycar(Model model, @RequestParam("id") int id) {
 //       int i =buyCarDao.delete(id);
         shopService.del(id);
 //        shopService.increaseNumber(name,num);
-     }
+    }
 
-   /*
-   多选删除
-    */
-   @RequestMapping(value = "/delcheck", method = RequestMethod.POST)
-    public void DelBuycar(Model model, @RequestParam("check")int[] id){
-                   shopService.deletecheckbox(id);
+    /*
+    多选删除
+     */
+    @RequestMapping(value = "/delcheck", method = RequestMethod.POST)
+    public void DelBuycar(Model model, @RequestParam("check") int[] id) {
+        shopService.deletecheckbox(id);
 //             shopService.increaseNumber(name,num);
 
 
     }
+
     /*
     购物车结算生成订单
      */
-    @RequestMapping(value = "/clearing",method = RequestMethod.POST)
+    @RequestMapping(value = "/clearing", method = RequestMethod.POST)
     public void Clearing(Model model,
-                         @RequestParam("id")int[] id,
-                         @RequestParam("number")int[] number,
-                         @RequestParam("username")String username1,
-                         @RequestParam("check")int[] checkid){
-       for (int i=0;i<id.length;i++)
-     {
-         int update=buyCarDao.update(number[i],id[i]);
-     }
+                         @RequestParam("id") int[] id,
+                         @RequestParam("number") int[] number,
+                         @RequestParam("username") String username1,
+                         @RequestParam("check") int[] checkid) {
+        for (int i = 0; i < id.length; i++) {
+            int update = buyCarDao.update(number[i], id[i]);
+        }
 
-       shopService.insertOrder(username1,checkid);
-      System.out.println("成功");
+        shopService.insertOrder(username1, checkid);
+        System.out.println("成功");
 /*
 在此创建一张确定下单的订单表
  */
     }
+
     /*管理员
     分页1
      */
@@ -201,93 +202,135 @@ public class UserController {
 而有些异步请求返回的jsp，或者是html类型的数据（load()方法请求返回的内容就不是json数据），
 此时controller映射的方法上就不能适应@responseBody注解了，否则会映射不到请求路径！
      */
-    @RequestMapping(value = "/admin",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
 
-    public String Admin(Model model,@RequestParam(value="page",defaultValue="1",required =true)Integer page,
-                        @RequestParam(value="page1",defaultValue="1",required =true)Integer page1,
-                        @RequestParam(value="page2",defaultValue="1",required =true)Integer page2,
-                        @RequestParam(value="username",defaultValue ="",required = true)String username,
-                        @RequestParam(value="usernameorder",defaultValue ="",required = true)String usernameorder,
-                        HttpSession session){
-        String s= (String) session.getAttribute("username");
-        System.out.println(username+"=1111111username");
-        if(!s.equals("123456"))
-        {   System.out.println(s);
+    public String Admin(Model model, @RequestParam(value = "page", defaultValue = "1", required = true) Integer page,
+                        @RequestParam(value = "page1", defaultValue = "1", required = true) Integer page1,
+                        @RequestParam(value = "page2", defaultValue = "1", required = true) Integer page2,
+                        @RequestParam(value = "username", defaultValue = "", required = true) String username,
+                        @RequestParam(value = "usernameorder", defaultValue = "", required = true) String usernameorder,
+                        HttpSession session) {
+        String s = (String) session.getAttribute("username");
+        System.out.println(username + "=1111111username");
+        if (!s.equals("123456")) {
+            System.out.println(s);
             session.invalidate();
             return "login";
-        }
-        else{
+        } else {
 /*
 热卖商品分页
  */
 
-            PageHelper.startPage(page,4);
-            List<HotSale> hotSale=shopService.getlist();
-            PageInfo<HotSale> p=new PageInfo<HotSale>(hotSale);
-            model.addAttribute("page",p);
-            model.addAttribute("hotsale",hotSale);
+            PageHelper.startPage(page, 4);
+            List<HotSale> hotSale = shopService.getlist();
+            PageInfo<HotSale> p = new PageInfo<HotSale>(hotSale);
+            model.addAttribute("page", p);
+            model.addAttribute("hotsale", hotSale);
 /*
 用户分页
  */
-              List<User> user=shopService.getAll();
-           // PageInfo<User> page1=new PageInfo<User>(user);
-            model.addAttribute("user",user);
+            List<User> user = shopService.getAll();
+            // PageInfo<User> page1=new PageInfo<User>(user);
+            model.addAttribute("user", user);
 /*
 购物车分页
  */
-            PageHelper.startPage(page1,5);
+            PageHelper.startPage(page1, 5);
 
-            if(username.equals(""))
-            {
-                List<BuyCar> buycar=shopService.getAllBuyCar();
-                PageInfo<BuyCar> page3=new PageInfo<BuyCar>(buycar);
-                model.addAttribute("page3",page3);
-                model.addAttribute("buycar",buycar);
-            }
-             else{
-                List<BuyCar> buycar=shopService.buycar(username);
-                PageInfo<BuyCar> page3=new PageInfo<BuyCar>(buycar);
-                model.addAttribute("usernames",username);
-                model.addAttribute("page3",page3);
-                model.addAttribute("buycar",buycar);
+            if (username.equals("")) {
+                List<BuyCar> buycar = shopService.getAllBuyCar();
+                PageInfo<BuyCar> page3 = new PageInfo<BuyCar>(buycar);
+                model.addAttribute("page3", page3);
+                model.addAttribute("buycar", buycar);
+            } else {
+                List<BuyCar> buycar = shopService.buycar(username);
+                PageInfo<BuyCar> page3 = new PageInfo<BuyCar>(buycar);
+                model.addAttribute("usernames", username);
+                model.addAttribute("page3", page3);
+                model.addAttribute("buycar", buycar);
             }
 
 
              /*
              订单分页
               */
-             PageHelper.startPage(page2,6);
-             if(usernameorder.equals(""))
-             {
-                 List<Order> order=shopService.getAllOrderlist();
-                 PageInfo<Order> page4=new PageInfo<Order>(order);
-                 model.addAttribute("page4",page4);
-                 model.addAttribute("order",order);
-             }
-            else{
-                 List<Order> order=shopService.order(usernameorder);
-                 PageInfo<Order> page4=new PageInfo<Order>(order);
-                 model.addAttribute("usernameorder",usernameorder);
-                 model.addAttribute("page4",page4);
-                 model.addAttribute("order",order);
-             }
-              return "admin";
+            PageHelper.startPage(page2, 6);
+            if (usernameorder.equals("")) {
+                List<Order> order = shopService.getAllOrderlist();
+                PageInfo<Order> page4 = new PageInfo<Order>(order);
+                model.addAttribute("page4", page4);
+                model.addAttribute("order", order);
+            } else {
+                List<Order> order = shopService.order(usernameorder);
+                PageInfo<Order> page4 = new PageInfo<Order>(order);
+                model.addAttribute("usernameorder", usernameorder);
+                model.addAttribute("page4", page4);
+                model.addAttribute("order", order);
+            }
+            return "admin";
         }
 
-}
-/*
-封号--解封
- */
-@RequestMapping(value = "/userstate",method = RequestMethod.POST)
-@ResponseBody
-    public void Fh(Model model,@RequestParam("username")String username){
-        shopService.update(username);
-}
+    }
 
-@RequestMapping(value = "/userstate2",method = RequestMethod.POST)
-@ResponseBody
-    public void JF(Model model,@RequestParam("username")String username){
+    /*
+    封号--解封
+     */
+    @RequestMapping(value = "/userstate", method = RequestMethod.POST)
+    @ResponseBody
+    public void Fh(Model model, @RequestParam("username") String username) {
+        shopService.update(username);
+    }
+
+    @RequestMapping(value = "/userstate2", method = RequestMethod.POST)
+    @ResponseBody
+    public void JF(Model model, @RequestParam("username") String username) {
         shopService.update2(username);
     }
 
+    /*
+    文件上传下载大全
+     */
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String upload() {
+        return "upload";
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public void upload(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
+      String path = request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/uploadfile");
+         for (int i = 0; i < file.length; i++) {
+      String fileName = file[i].getOriginalFilename();
+            System.out.println("fileName---------->" + file[i].getOriginalFilename());
+            File dir = new File(path, fileName);
+            if (!dir.exists()) {
+                dir.mkdirs();
+                file[i].transferTo(dir);
+            }
+            //MultipartFile自带的解析方法
+     System.out.println("上传成功!");
+        }
+   }
+    @RequestMapping("/down")
+    public void down(HttpServletRequest request,HttpServletResponse response) throws Exception{
+        //模拟文件，myfile.txt为需要下载的文件
+        String fileName = request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/uploadfile")+"/a.jpg";
+        //获取输入流
+        InputStream bis = new BufferedInputStream(new FileInputStream(new File(fileName)));
+        //假如以中文名下载的话
+      String filename = "下载文件.jpg";
+        //转码，免得文件名中文乱码
+        filename = URLEncoder.encode(filename,"UTF-8");
+        //设置文件下载头
+        response.addHeader("Content-Disposition", "attachment;filename=" + filename);
+        //1.设置文件ContentType类型，这样设置，会自动判断下载文件类型
+        response.setContentType("multipart/form-data");
+        BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
+        int len = 0;
+        while((len = bis.read()) != -1){
+            out.write(len);
+            out.flush();
+        }
+        out.close();
+    }
 }

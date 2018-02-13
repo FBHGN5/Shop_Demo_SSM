@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Shop_Demo:war exploded">
-    <output-path>$PROJECT_DIR$/../Shop_Demo/target/shop</output-path>
+    <output-path>$PROJECT_DIR$/target/shop</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -34,10 +34,12 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.1.7.RELEASE" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.1.2" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:1.0" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/../Shop_Demo/target/shop/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/shop/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="Shop_Demo/web/Web" />
     </root>
