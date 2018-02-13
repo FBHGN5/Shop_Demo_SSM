@@ -53,12 +53,12 @@
 <!-- 放大镜 图片大小必须和容器大小一致-->
 <div>
 <div id="box">
-<div id="picture"><img src="${hotsale.wimg}">
+<div id="picture"><img style="width: 350px;height:350px;" src="${hotsale.wimg}">
 </div>
 <div id="float">
 </div>
 </div>
-<div id="big"><img  src="${hotsale.bimg}" alt=""></div>
+<div id="big"><img style="width:800px;height:800px;"  src="${hotsale.bimg}" alt=""></div>
 </div>
 <div id="infor">
 <div id="name">${hotsale.name}</div>

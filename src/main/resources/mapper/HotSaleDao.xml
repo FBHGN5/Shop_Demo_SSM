@@ -33,6 +33,11 @@
         where id= #{id}
 
     </update>
+    <insert id="insert">
+      insert ignore into hotsale(username,name,price,img,number,wimg,bimg,buycarimg)
+        value(#{username},#{name},#{price},#{img},#{number},#{wimg},#{bimg},#{buycarimg})
+
+    </insert>
     <!--<update id="update">-->
       <!--update hotsale-->
       <!--set-->

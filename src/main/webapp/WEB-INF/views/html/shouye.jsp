@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>首页</title>
+
 <link rel="stylesheet" href="/resources/css/shouye/shouye.css">
 <link rel="stylesheet" href="/resources/css/shouye/lunbo.css">
 	<link rel="stylesheet" href="/resources/css/shouye/mod.css">
@@ -381,9 +383,9 @@
 <div id="toux"><img src="/resources/img/touxiang.png" alt=""></div>
 <div id="huany">Hi!&nbsp;&nbsp;${sessionScope.username}</div>
 <div id="buts">
-<button class="bu"><a href="/shop/login">退出</a></button>
-<button class="bu"><a href="/shop/register">注册</a></button>
-<button class="bu"><a href="#">开店</a></button>
+	<button class="bu"><a href="/shop/login">${but}</a></button>
+	<button class="bu"><a href="/shop/register">注册</a></button>
+	<button class="bu"><a href="/shop/sale">出售</a></button>
 </div>
 </div>
 <!-- 促销和公告 -->
@@ -452,7 +454,7 @@
 <div class="item">
 <ul>
 	<c:forEach var="hs" items="${list}">
-		<li><div class="item1"><div><a href="/shop/wupin?id=${hs.id}"><img src="${hs.img}"></a></div><div class="ming"><a href="/shop/wupin?id=${hs.id}">${hs.name}</a></div>
+		<li><div class="item1"><div><a href="/shop/wupin?id=${hs.id}"><img style="width:200px;height:200px;" src="${hs.img}"></a></div><div class="ming"><a href="/shop/wupin?id=${hs.id}">${hs.name}</a></div>
 			<div class="jiage"><h5>￥</h5><em class="price">${hs.price}</em></div></li>
 	</c:forEach>
 </div>

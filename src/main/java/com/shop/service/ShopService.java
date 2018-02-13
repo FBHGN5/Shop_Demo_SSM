@@ -21,6 +21,9 @@ public interface ShopService {
     List<Order> getAllOrderlist();
    HotSale getById(int id);
    int buy(String img,String name,int price,String username,int number,int id,int kucun);
+   void sale(String username,String name,
+             int price,String img,int number,
+              String wimg, String bimg,String buycarimg);
     List<BuyCar>  buycar(String username);
     List<Order>  order(String username);
     void del(int id);

@@ -33,6 +33,11 @@ public class HotSaleDaoTest {
         hotSaleDao.update(1,1,1);
     }
 
+    @Test
+    public void insert() {
+        hotSaleDao.insert("1","1",1,"1",1,"2","2","1");
+    }
+
 //    @Test
 //    public void reduceNumber() {
 //        int id=1;

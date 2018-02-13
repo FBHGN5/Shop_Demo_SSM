@@ -362,6 +362,9 @@ border-radius:3px;
 .bu a{
 	font-size:15px;
 	color:#fff;
+	display:block;
+	height: 30px;
+	line-height: 30px;
 }
 #xian{
 	width:85px;

@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/shop/upload" method="post" enctype="multipart/form-data">
+<form action="/shop/uploadnew" method="post" enctype="multipart/form-data">
     选择文件:<input type="file" name="file" width="120px">
     <input type="file" name="file" width="120px">
     <input type="file" name="file" width="120px">

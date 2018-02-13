@@ -80,7 +80,7 @@ public class UserController {
     注册
      */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String Reg(Model model) {
+    public String reg(Model model) {
         return "reg";
     }
 
@@ -89,7 +89,7 @@ public class UserController {
      */
     @RequestMapping(value = "/reg", method = RequestMethod.POST)
     @ResponseBody
-    public Reg Reg(Model model, @RequestParam("username") String username, @RequestParam("password") String password) {
+    public Reg reg(Model model, @RequestParam("username") String username, @RequestParam("password") String password) {
         Reg reg = shopService.register(username, password);
         String result;
         result = reg.getResult();
@@ -103,7 +103,7 @@ public class UserController {
      */
     @RequestMapping(value = "/mod", method = RequestMethod.POST)
     @ResponseBody
-    public int Update(Model model, @RequestParam("username") String username, @RequestParam("old") String old,
+    public int update(Model model, @RequestParam("username") String username, @RequestParam("old") String old,
                       @RequestParam("password") String password) {
         Mod mod = shopService.update(username, old, password);
         System.out.println("old=" + old + "password=" + password);
@@ -118,7 +118,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/wupin", method = RequestMethod.GET)
-    public String Wupin(Model model, @RequestParam("id") int id) {
+    public String wupin(Model model, @RequestParam("id") int id) {
         HotSale hotSale = shopService.getById(id);
         if (hotSale == null) {
             return "redirect:/shop/shouye";
@@ -132,7 +132,7 @@ public class UserController {
      */
     @RequestMapping(value = "/buy", method = RequestMethod.POST)
     @ResponseBody
-    public int Buy(Model model, @RequestParam("img") String img, @RequestParam("name") String name,
+    public int buy(Model model, @RequestParam("img") String img, @RequestParam("name") String name,
                    @RequestParam("price") int price, @RequestParam("username") String username
             , @RequestParam("number") int number, @RequestParam("id") int id, @RequestParam("kucun") int kucun) {
         int i = shopService.buy(img, name, price, username, number, id, kucun);
@@ -142,7 +142,7 @@ public class UserController {
 
     @RequestMapping(value = "/buycar", method = RequestMethod.POST)
 
-    public String Buycar(Model model, @RequestParam("username") String username, HttpSession session) {
+    public String buycar(Model model, @RequestParam("username") String username, HttpSession session) {
         if (session.getAttribute("username") == null) {
             return "login";
         }
@@ -156,7 +156,7 @@ public class UserController {
      */
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     @ResponseBody
-    public void Buycar(Model model, @RequestParam("id") int id) {
+    public void buycar(Model model, @RequestParam("id") int id) {
 //       int i =buyCarDao.delete(id);
         shopService.del(id);
 //        shopService.increaseNumber(name,num);
@@ -166,7 +166,7 @@ public class UserController {
     多选删除
      */
     @RequestMapping(value = "/delcheck", method = RequestMethod.POST)
-    public void DelBuycar(Model model, @RequestParam("check") int[] id) {
+    public void delBuycar(Model model, @RequestParam("check") int[] id) {
         shopService.deletecheckbox(id);
 //             shopService.increaseNumber(name,num);
 
@@ -177,7 +177,7 @@ public class UserController {
     购物车结算生成订单
      */
     @RequestMapping(value = "/clearing", method = RequestMethod.POST)
-    public void Clearing(Model model,
+    public void clearing(Model model,
                          @RequestParam("id") int[] id,
                          @RequestParam("number") int[] number,
                          @RequestParam("username") String username1,
@@ -204,7 +204,7 @@ public class UserController {
      */
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
 
-    public String Admin(Model model, @RequestParam(value = "page", defaultValue = "1", required = true) Integer page,
+    public String admin(Model model, @RequestParam(value = "page", defaultValue = "1", required = true) Integer page,
                         @RequestParam(value = "page1", defaultValue = "1", required = true) Integer page1,
                         @RequestParam(value = "page2", defaultValue = "1", required = true) Integer page2,
                         @RequestParam(value = "username", defaultValue = "", required = true) String username,
@@ -286,31 +286,85 @@ public class UserController {
     public void JF(Model model, @RequestParam("username") String username) {
         shopService.update2(username);
     }
-
     /*
-    文件上传下载大全
+    sale
      */
-    @RequestMapping(value = "/upload", method = RequestMethod.GET)
-    public String upload() {
-        return "upload";
+    @RequestMapping(value = "/sale",method = RequestMethod.GET)
+    public  String sale(HttpSession session)
+    {
+        if(session.getAttribute("username")==null)
+        {
+            return "forward:/shop/login";
+        }
+        else{
+            return "sale";
+        }
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    @ResponseBody
-    public void upload(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
-      String path = request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/uploadfile");
+    @RequestMapping(value = "/ins", method = RequestMethod.POST)
+
+    public String uploadhotsale(@RequestParam("username")String username,
+                         @RequestParam("name")String name,
+                         @RequestParam("price")int price,
+                         @RequestParam("number")int number,
+
+                         @RequestParam("file") MultipartFile[] file,
+                         HttpServletRequest request) throws IOException {
+     //   String path="F:\\Web\\SSM框架学习\\Shop_Demo\\src\\main\\webapp\\resources\\img";
+
+        String path =  request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/img");
+
+        String[] imgname=new String[file.length];
          for (int i = 0; i < file.length; i++) {
-      String fileName = file[i].getOriginalFilename();
+             String fileName= file[i].getOriginalFilename();
             System.out.println("fileName---------->" + file[i].getOriginalFilename());
             File dir = new File(path, fileName);
             if (!dir.exists()) {
                 dir.mkdirs();
                 file[i].transferTo(dir);
             }
+            else{
+                System.out.println("文件名相同的是第"+(i+1)+"个文件");
+            }
             //MultipartFile自带的解析方法
-     System.out.println("上传成功!");
+           imgname[i]=fileName;
         }
-   }
+      String buycarimg="/resources/img/5.png";
+       shopService.sale(username,name,price,
+               "/resources/img/"+imgname[0],number,
+              "/resources/img/"+imgname[1],
+              "/resources/img/"+imgname[2],buycarimg);
+        System.out.println("上传成功!"+path+"test");
+   return "redirect:/shop/shouye";
+    }
+
+
+    /*
+文件上传下载大全
+ */
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String upload() {
+        return "upload";
+    }
+
+
+    @RequestMapping(value = "/uploadnew", method = RequestMethod.POST)
+    @ResponseBody
+    public void upload(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
+        String path = request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/uploadfile");
+        for (int i = 0; i < file.length; i++) {
+            String fileName = file[i].getOriginalFilename();
+            System.out.println("fileName---------->" + file[i].getOriginalFilename());
+            File dir = new File(path, fileName);
+            if (!dir.exists()) {
+                dir.mkdirs();
+                file[i].transferTo(dir);
+            }
+
+            //MultipartFile自带的解析方法
+         }
+        System.out.println("上传成功!"+path);
+    }
     @RequestMapping("/down")
     public void down(HttpServletRequest request,HttpServletResponse response) throws Exception{
         //模拟文件，myfile.txt为需要下载的文件
@@ -318,7 +372,7 @@ public class UserController {
         //获取输入流
         InputStream bis = new BufferedInputStream(new FileInputStream(new File(fileName)));
         //假如以中文名下载的话
-      String filename = "下载文件.jpg";
+        String filename = "下载文件.jpg";
         //转码，免得文件名中文乱码
         filename = URLEncoder.encode(filename,"UTF-8");
         //设置文件下载头

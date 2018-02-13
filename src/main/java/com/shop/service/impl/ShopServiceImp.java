@@ -173,6 +173,10 @@ public class ShopServiceImp implements ShopService {
         return 1;
     }
 
+    public void sale(String username, String name, int price, String img, int number, String wimg, String bimg, String buycarimg) {
+        hotSaleDao.insert(username,name,price,img,number,wimg,bimg,buycarimg);
+    }
+
     public   List<BuyCar> buycar(String username) { return buyCarDao.queryAll(username);}
 
     public List<Order> order(String username) {

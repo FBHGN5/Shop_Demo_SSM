@@ -121,8 +121,7 @@ hr{ width:100%;
 	left:0;
 	border:1px solid #ccc;
 	cursor:move;
-
-	display:none;
+    display:none;
 }
 #box:hover #float{
 	background-image:url(/resources/img/float.png);

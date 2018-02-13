@@ -118,7 +118,7 @@
       <version>5.1.2</version>
     </dependency>
     <!-- Apache Commons FileUpload -->
-    <!-- http://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+    <!-- 文件上传的jar-->
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
