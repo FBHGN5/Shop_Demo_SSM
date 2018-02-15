@@ -13,7 +13,7 @@ body {
 #container,
 .sections,
 .section {
-
+    /*必须，兼容，在浏览器不支持transform属性时，通过改变top/left完成滑动动画*/
     position: relative;
     /*必须，关系到单个page能否全屏显示*/
     height: 100%;
@@ -23,6 +23,7 @@ body {
     background-color: #DCB2B2;
     background-size: cover;
     background-position: 50% 50%;
+
 }
 #title{
     width:100%;
@@ -34,43 +35,17 @@ body {
     z-index:1000;
     line-height: 75px;
 }
-
+/*非必需，只是用来设置背景图，id不会被插件用到*/
 #section0 {
-    width:auto;
-    height:auto;
+    background-image: url(/resources/img/6087.jpg);
+
 }
-#deo{
-    width:100%;
-    height:866px;
-    z-index:-9999;
-    overflow:hidden;
-    margin-top:1px;
-}
-#video{
-    width:100%;
-    z-index:-9999;
-    margin-top:-399px;
-}
-#vid{
-    width:100%;
-    height:865px;
-    z-index:-9999;
-    margin-top:204px;
-    overflow:hidden;
-}
-#video1{
-    width:100%;
-    z-index:-9999;
-    margin-top:-399px;
-}
+
 #section1 {
-    height:1080px;
     background-image: url(/resources/img/bag.jpg);
 }
 #section2 {
-    width:auto;
-    height:auto;
-    /*  background-image: url(../image/img3.jpg); */
+    background-image: url(/resources/img/3381.jpg);
 }
 #section3 {
     background-image: url(/resources/img/login.jpg);
@@ -85,7 +60,7 @@ body {
 .pages li {
     width: 8px;
     height: 8px;
-    border-radius: 50%;/* 设置圆形按钮 */
+    border-radius: 50%;
     background: #fff;
     margin: 15px 0 0 7px;
     cursor:pointer;
@@ -97,16 +72,16 @@ body {
     border: 4px solid #FFFFFF;
     background: none;
 }
-
-.mid{width:100%;
+.mid{width:790px;
     height:110px;
     color:#fff;
     position:absolute;
     top:370px;
     left:540px;
+
 }
 .lab{margin-left:68px;}
-.lab a{text-decoration:none;color:#fff;margin:0 48px;font-size:18px;opacity:0.9;}
+.lab a{text-decoration:none;color:red;margin:0 48px;font-size:18px;opacity:0.9;}
 .lab a:hover{text-decoration:underline;opacity:1;}
 .welcome{
     margin-left:256px;
@@ -118,7 +93,7 @@ body {
 dd li{float:right;list-style:none;opacity:1;}
 dd li a{text-decoration:none;color:#fff;margin:0 20px;cursor:pointer;font-size:18px;opacity: 0.9;}
 dd li a:hover{text-decoration:underline;opacity:1;}
-p{color:#fff;}
+p{color:#F12727;}
 .zc{
     position:absolute;
     top:380px;
@@ -128,7 +103,7 @@ p{color:#fff;}
 .zc a{margin:0 50px;font-size:18px;margin-left:127px;}
 .zc a:hover{text-decoration:underline;}
 .zc hr{width:600px;}
-a{text-decoration:none;color:#fff;}
+a{text-decoration:none;color:red;}
 .zc1{
     font-size:40px;
     margin-left:218px;

@@ -14,7 +14,7 @@
 	<i>在线购物</i> <span id="welzc">&nbsp;欢迎注册</span>
 </div>
 <br><br><br><br><br><br>	
-<img id="hrr" style="width:2000px;position:absolute;left:0px; " src="/resources/img/hr.png" alt="">
+<img id="hrr" style="width:1920px;position:absolute;left:0px; " src="/resources/img/hr.png" alt="">
 <div id="contain">
 	<div id="box">
 		<div id="zc"><div class="lab"><label>用&nbsp;&nbsp;户&nbsp;&nbsp;名</label><input type="text" id="us1" class="user" placeholder="您的用户名" >
