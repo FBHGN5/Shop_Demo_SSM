@@ -73,7 +73,7 @@
 		</div>
 		<!-- 用户信息表格 -->
 			<div class="container" id="usertable" >
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
       <div class="panel-heading text-center "><h2 class="name">用户信息</h2></div>
        <div class="panel-body">
 <table class="table">
@@ -123,7 +123,7 @@
 		<!-- 热卖商品表 -->
 		<div class="container eq" id="hotsale" >
 		<div class="search"><input class="setext" type="text">&nbsp;<button class="btn btn-info">搜索</button></div>
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
       <div class="panel-heading text-center "><h2 class="name">热卖商品</h2></div>
        <div class="panel-body">
 <table class="table">
@@ -195,7 +195,7 @@
 <div class="container eq" id="buycar" >
 <div class="search"><input class="setext" id="find" placeholder="请输入下单用户账户" value="${usernames}" type="text">&nbsp;<button id="search" class="btn btn-info aa">搜索</button>
     &nbsp; <button id="searchall" class="btn btn-info">查看全部</button></div>
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
       <div class="panel-heading text-center "><h2 class="name">购物车</h2></div>
        <div class="panel-body">
 <table class="table">
@@ -267,7 +267,7 @@
 <div class="container eq" id="orderlist" >
 <div class="search"><input class="setext" id="find1" type="text" placeholder="请输入下单用户账户" value="${usernameorder}">&nbsp;<button id="search1" class="btn btn-info aa">搜索</button>
     &nbsp; <button id="searchallorder" class="btn btn-info">查看全部</button></div>
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
       <div class="panel-heading text-center "><h2 class="name">订单信息</h2></div>
        <div class="panel-body">
 <table class="table">

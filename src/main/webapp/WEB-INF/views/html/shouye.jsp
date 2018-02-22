@@ -454,7 +454,7 @@
 <div class="item">
 <ul>
 	<c:forEach var="hs" items="${list}">
-		<li><div class="item1"><div><a href="/shop/wupin?id=${hs.id}"><img style="width:200px;height:200px;" src="${hs.img}"></a></div><div class="ming"><a href="/shop/wupin?id=${hs.id}">${hs.name}</a></div>
+		<li><div class="item1"><div><a href="/shop/wupin?id=${hs.id}"><img style="width:200px;height:200px;" src="${hs.img}" alt="载入中..."></a></div><div class="ming"><a href="/shop/wupin?id=${hs.id}">${hs.name}</a></div>
 			<div class="jiage"><h5>￥</h5><em class="price">${hs.price}</em></div></li>
 	</c:forEach>
 </div>

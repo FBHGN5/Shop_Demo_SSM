@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,11 +43,16 @@ public class UserController {
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
     public int check(@RequestParam("username") String username,
-                     @RequestParam("password") String password, Model model, HttpSession session) {
+                     @RequestParam("password") String password, Model model, HttpSession session,HttpServletResponse response) {
 
         int result = shopService.login(username, password);
         if (result == -1 || result == 0) {
             session.setAttribute("username", username);
+            //存sessionId的cookie
+            Cookie cookieSId = new Cookie("JSESSIONID",session.getId());
+            cookieSId.setMaxAge(60*60);
+            cookieSId.setPath("/");
+            response.addCookie(cookieSId);
         }
         System.out.println("用户状态：0登录成功，1账户错误，2密码错误,3封号.现在状态:" + result);
         return result;
