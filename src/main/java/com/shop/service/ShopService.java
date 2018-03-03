@@ -20,6 +20,7 @@ public interface ShopService {
     List<BuyCar> getAllBuyCar();
     List<Order> getAllOrderlist();
    HotSale getById(int id);
+   int hotdelById(int id);
    int buy(String img,String name,int price,String username,int number,int id,int kucun);
    void sale(String username,String name,
              int price,String img,int number,

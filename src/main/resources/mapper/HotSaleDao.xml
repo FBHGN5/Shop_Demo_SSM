@@ -38,6 +38,10 @@
         value(#{username},#{name},#{price},#{img},#{number},#{wimg},#{bimg},#{buycarimg})
 
     </insert>
+    <delete id="deleteById">
+       delete from hotsale
+       where id=#{id}
+    </delete>
     <!--<update id="update">-->
       <!--update hotsale-->
       <!--set-->

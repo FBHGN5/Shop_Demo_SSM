@@ -6,7 +6,7 @@
 
 #box{
     width:14%;
-    height: 899px;
+    height: 849px;
     /* */
     background-color: #2d3945;
     color:#fff;
@@ -87,12 +87,12 @@
 }
 .pagination{
     position: relative;
-    left: 550px;
+    left: 430px;
 }
 p{
     color: red;
     position: relative;
-    left: 560px;
+    left: 460px;
 }
 .panel-default{
     width: 1400px;

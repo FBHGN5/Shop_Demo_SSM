@@ -127,7 +127,7 @@ public class UserController {
     public String wupin(Model model, @RequestParam("id") int id) {
         HotSale hotSale = shopService.getById(id);
         if (hotSale == null) {
-            return "redirect:/shop/shouye";
+            return "forward:/shop/shouye";
         }
         model.addAttribute("hotsale", hotSale);
         return "wupin";
@@ -293,6 +293,17 @@ public class UserController {
         shopService.update2(username);
     }
     /*
+    管理员删除热卖商品
+     */
+    @RequestMapping(value = "/delhot",method = RequestMethod.GET)
+
+    public void delhot(@RequestParam("hotid")int hotid)
+    {   shopService.hotdelById(hotid);
+
+    }
+
+
+    /*
     sale
      */
     @RequestMapping(value = "/sale",method = RequestMethod.GET)
@@ -356,7 +367,7 @@ public class UserController {
 
     @RequestMapping(value = "/uploadnew", method = RequestMethod.POST)
     @ResponseBody
-    public void upload(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
+    public String upload(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
         String path = request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/uploadfile");
         for (int i = 0; i < file.length; i++) {
             String fileName = file[i].getOriginalFilename();
@@ -370,6 +381,7 @@ public class UserController {
             //MultipartFile自带的解析方法
          }
         System.out.println("上传成功!"+path);
+        return "中文";
     }
     @RequestMapping("/down")
     public void down(HttpServletRequest request,HttpServletResponse response) throws Exception{

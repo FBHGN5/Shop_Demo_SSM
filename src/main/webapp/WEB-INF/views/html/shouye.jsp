@@ -58,6 +58,16 @@
         type="submit" value="我的购物车" id="text"></form></div>
 </div>
 </div>
+<div id="func" style="position: fixed;top:200px;font-size: 25px;color:orangered">
+<ol>
+	<li>该页面功能</li>
+	<li>1、浏览器顶部修改密码</li>
+	<li>2、判断用户是否登录</li>
+	<li>3、右侧出售商品</li>
+	<li>4、网页底部所有热卖单品的购买</li>
+</ol>
+</ul>
+</div>
 <div id="zuida">
 <div id="box">
 <div id="fenlei"><span id="sp">全部商品分类</span>

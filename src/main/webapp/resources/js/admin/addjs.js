@@ -1,3 +1,9 @@
+function deleteRow(r)
+{
+    var i=r.parentNode.parentNode.rowIndex;
+    document.getElementById('table').deleteRow(i);
+
+}
 $(function(){
     $("#buy").click(function () {
        window.document.f.submit();

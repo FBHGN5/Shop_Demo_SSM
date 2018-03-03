@@ -126,7 +126,7 @@
   <div class="panel panel-primary">
       <div class="panel-heading text-center "><h2 class="name">热卖商品</h2></div>
        <div class="panel-body">
-<table class="table">
+<table class="table" id="table">
  <thead>
       <tr>
          <th>商品名</th>
@@ -150,8 +150,8 @@
          <td>${hotsale.wimg}</td>
          <td>${hotsale.bimg}</td>
          <td><fmt:formatDate value="${hotsale.createTime}"   pattern="yyyy-MM-dd HH:mm:ss" type="date" dateStyle="long" /></td>
-         <td>${hotsale.id}</td>
-          <td class="href"><a href="javascript:void(0)">删除</a></td>
+          <td class="hotid">${hotsale.id}</td>
+          <td class="href"><a href="/shop/delhot?hotid=${hotsale.id}" target="hidden" onclick="if(confirm('确定删除吗?')==false)return false;else{deleteRow(this);return true}">删除</a></td>
       </tr>
    </c:forEach>
    </tbody>
@@ -388,6 +388,7 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
        </script>
+        <iframe name="hidden" id="hidden" style="display:none"></iframe>
 <iframe allowtransparency="true" frameborder="0" width="385" height="96" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2&z=3&t=0&v=0&d=3&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=54511&w=385&h=96&align=center"></iframe>
 	</body>
 	</html>

@@ -5,23 +5,9 @@
 <head>  
     <title>成为卖家</title>
     <meta charset="utf-8">  
-    <script type="text/javascript">  
-       var j=0;
-        function scroll() {  
-            var title = document.title;  
-            var a=["欢迎","成为","卖家!"];
-            
-             for(var i=0;i<a.length;i++) 
-          { a[i]=a[i]; } 
-       document.title = a[j];
-      j++;
-if(j>=a.length)
-      {
-      	j=0;
-      }
-}  
-setInterval(scroll,1000);
-    </script>  
+    <script type="text/javascript" src="/resources/js/sale/sale.js"> </script>
+    <script src="/resources/js/common/jquery-1.11.1.min.js"></script>
+    <script src="/resources/js/common/plug-in.js"></script>
     <style>
 .input{
   width:500px;
@@ -45,13 +31,13 @@ setInterval(scroll,1000);
 请上传3张商品图片:
 <br>
 <br>
-&nbsp;&nbsp;首页展示图(分辨率200*200):<input class="input" type="file" name="file">
+    &nbsp;&nbsp;首页展示图(分辨率200*200): <span id="permitSpan"><input class="input" type="file" name="file"  onchange="checkPerm(this);"></span>
 <br>
 <br>
-&nbsp;物品页展示图(分辨率350*350):<input class="input" type="file" name="file">
+    &nbsp;物品页展示图(分辨率350*350): <span id="permitSpan"><input class="input" type="file" name="file" onchange="checkPerm(this);"></span>
 <br>
 <br>
-物品页放大镜图(分辨率800*800):<input class="input" type="file" name="file">
+    物品页放大镜图(分辨率800*800): <span id="permitSpan"><input class="input" type="file" name="file" onchange="checkPerm(this);"></span>
     <br>
     <br>
     <input type="submit" value="提交">

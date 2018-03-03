@@ -143,6 +143,10 @@ public class ShopServiceImp implements ShopService {
         return hotSaleDao.queryById(id);
     }
 
+    public int hotdelById(int id) {
+        return hotSaleDao.deleteById(id);
+    }
+
     public int buy(String img, String name, int price,String username,int number,int id,int kucun) {
         BuyCar buycar=buyCarDao.selectu(username,name);
         /*

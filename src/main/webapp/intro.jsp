@@ -83,6 +83,7 @@
             <li><a href="/shop/shouye">购物首页</a>|</li>
         </dd>
     </div>
+    <audio src="/resources/img/404/404.mp3" autoplay loop></audio>
 </body>
 </html>
 
