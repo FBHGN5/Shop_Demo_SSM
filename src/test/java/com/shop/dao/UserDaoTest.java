@@ -52,4 +52,10 @@ public class UserDaoTest {
     public void updateUser2() {
         userDao.updateUser2("123456","12");
     }
+
+    @Test
+    public void selusername() {
+        User user=userDao.selusername("1");
+        logger.info("user{}",user);
+    }
 }

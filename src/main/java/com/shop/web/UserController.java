@@ -216,13 +216,19 @@ public class UserController {
                         @RequestParam(value = "username", defaultValue = "", required = true) String username,
                         @RequestParam(value = "usernameorder", defaultValue = "", required = true) String usernameorder,
                         HttpSession session) {
-        String s = (String) session.getAttribute("username");
-        System.out.println(username + "=1111111username");
-        if (!s.equals("123456")) {
-            System.out.println(s);
-            session.invalidate();
-            return "login";
-        } else {
+        String name=(String)session.getAttribute("username");
+          User user1=shopService.queryByUsername(name);
+          logger.info("user{}",user1);
+        if (session.getAttribute("username")==null) {
+
+            return "redirect:/shop/login";
+        }
+        else if(user1.getState()==0)
+        {
+            logger.info("user{}",user1);
+            return "forward:/shop/shouye";
+        }
+        else {
 /*
 热卖商品分页
  */

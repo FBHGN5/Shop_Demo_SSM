@@ -10,6 +10,7 @@ import java.util.List;
 
 
 public interface ShopService {
+    User queryByUsername(String username);
     int login(String username, String password);
     void update(String username);
     void update2(String username);

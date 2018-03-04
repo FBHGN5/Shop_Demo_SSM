@@ -32,6 +32,11 @@ public class ShopServiceImp implements ShopService {
     private BuyCarDao buyCarDao;
     @Autowired
     private OrderDao orderDao;
+
+    public User queryByUsername(String username) {
+     return userDao.selusername(username) ;
+    }
+
     public int login(String username, String password) {
         User user=userDao.selusername(username);
         int result;

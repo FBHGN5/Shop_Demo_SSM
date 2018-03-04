@@ -91,4 +91,10 @@ public class ShopServiceImpTest {
         shopService.insertOrder(username,checkid);
 
     }
+
+    @Test
+    public void queryByUsername() {
+        User user=shopService.queryByUsername("1");
+        logger.info("user{}",user);
+    }
 }
