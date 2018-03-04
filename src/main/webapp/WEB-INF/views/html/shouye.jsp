@@ -58,7 +58,7 @@
         type="submit" value="我的购物车" id="text"></form></div>
 </div>
 </div>
-<div id="func" style="position: fixed;top:200px;font-size: 25px;color:orangered">
+<div id="func" style="position: fixed;top:200px;font-size: 20px;color:#00C4FF">
 <ol>
 	<li>该页面功能</li>
 	<li>1、浏览器顶部修改密码</li>

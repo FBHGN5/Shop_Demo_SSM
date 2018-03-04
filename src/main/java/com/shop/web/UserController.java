@@ -54,7 +54,7 @@ public class UserController {
             cookieSId.setPath("/");
             response.addCookie(cookieSId);
         }
-        System.out.println("用户状态：0登录成功，1账户错误，2密码错误,3封号.现在状态:" + result);
+        System.out.println("用户状态：0登录成功,1账户错误,2密码错误,3封号,-1管理员。 现在状态:" + result);
         return result;
     }
 
