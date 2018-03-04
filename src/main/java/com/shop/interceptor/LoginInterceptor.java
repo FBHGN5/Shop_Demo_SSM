@@ -6,25 +6,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //首先进入的方法
         System.out.println("preHandle");
-        return true;
-        //return false表示拦截，不向下执行
-        //return true表示放行
-//        System.out.println(request.getServletPath());
-//        HttpSession session = request.getSession();
-//        User u=(User)session.getAttribute("userInfo");
-//        if(u!=null){
-//            return true;
-//        }else{
-//            return false;
-//        }
+        String url=request.getRequestURI();
+        if(url.indexOf("/shop/user")>=0)
+        {
+            return true;
+        }
+        HttpSession session = request.getSession();
+        String user= (String) session.getAttribute("username");
+        if(user!=null)
+        {
+            return true;
+        }
 
-    }
+        else{
+            request.getRequestDispatcher("/WEB-INF/views/html/login.jsp").forward(request,response);
+            return  false;
+        }
+
+ }
     //返回modelAndView之前执行
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
