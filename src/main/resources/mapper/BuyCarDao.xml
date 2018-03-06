@@ -48,7 +48,7 @@
     <select id="select" resultType="BuyCar">
         select
         *from
-        buycar
+       buycar
         where id=#{id}
     </select>
     <select id="selectu" resultType="BuyCar">

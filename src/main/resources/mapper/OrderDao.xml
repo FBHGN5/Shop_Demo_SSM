@@ -26,4 +26,9 @@
         where
         username=#{username}
     </select>
+    <delete id="deleteOrder">
+        delete from
+        orderlist
+        where id=#{id}
+    </delete>
 </mapper>

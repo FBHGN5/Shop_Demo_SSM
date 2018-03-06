@@ -4,6 +4,7 @@ $(function () {
         if($("#username").val()=="")
         {
             $.Pop('请先登录！',{Animation:'layerFadeIn'});
+            setInterval(go,1000);
             return;
         }
         else if(parseInt($("#cc").html())-parseInt($("#cc1").val())<0)
@@ -40,4 +41,7 @@ $(function () {
         });
         }
     });
+    function go() {
+        window.location.href="/shop/login";
+    }
 });

@@ -22,7 +22,7 @@
 <div id="wele">欢迎${sessionScope.username}&nbsp;&nbsp;<a href="/shop/login" style="text-decoration:underline;color: red;">${but}</a></div>
 <div id="top">
 <ul>
-<li><a href="#">我的订单</a>|</li>
+<li><a href="/shop/order">我的订单</a>|</li>
 <li><a href="javascript:void(0)" id="modpass">修改密码</a>|</li>
 <li><a href="#">关于我们</a>|</li>
 <li><a href="#">网站导航</a>|</li>

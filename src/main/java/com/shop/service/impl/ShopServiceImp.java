@@ -200,6 +200,10 @@ public class ShopServiceImp implements ShopService {
         buyCarDao.deleteCheckBox(id);
     }
 
+    public void deleteOrder(int id) {
+        orderDao.deleteOrder(id);
+    }
+
     public void reduceNumber(int[] id, int[] num) {
          for(int i=0;i<id.length;i++)
          {

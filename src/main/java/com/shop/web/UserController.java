@@ -10,6 +10,7 @@ import com.shop.entity.HotSale;
 import com.shop.entity.Order;
 import com.shop.entity.User;
 import com.shop.service.ShopService;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -360,7 +361,28 @@ public class UserController {
         System.out.println("上传成功!"+path+"test");
    return "redirect:/shop/shouye";
     }
+    /*
+    用户个人订单页面
+     */
+    @RequestMapping(value = "/order",method = RequestMethod.GET)
+    public String order(Model model,HttpSession session)
+    {  if(session.getAttribute("username")==null)
+    {
+        return "redirect:/shop/login";
+    }
+        String username= (String) session.getAttribute("username");
+        List<Order> order=shopService.order(username);
+         model.addAttribute("order",order);
+        return "order";
+    }
 
+/*
+删除订单
+ */
+@RequestMapping(value = "/delorder",method = RequestMethod.GET)
+public void delorder(Model model,@RequestParam("id") int id)
+{   shopService.deleteOrder(id);
+}
 
     /*
 文件上传下载大全
