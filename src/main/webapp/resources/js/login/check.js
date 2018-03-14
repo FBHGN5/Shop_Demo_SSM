@@ -52,7 +52,7 @@ for(i=0;i<=61;i++)
 generateBig();
 check.onclick=function(){
 
-$.ajax({
+    $.ajax({
         type: "POST",
         url: "/shop/user",
         dataType: "json",

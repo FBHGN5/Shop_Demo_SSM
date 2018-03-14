@@ -72,25 +72,9 @@ public class ShopServiceImpTest {
 
     }
 
-    @Test
-    public void reduceNumber() {
-        int[] id={1,2};
-        int[] num=new int[id.length];
-        for (int i=0;i<id.length;i++)
-        {
-            BuyCar buyCar= buyCarDao.select(id[i]);
-            num[i]=buyCar.getNumber();
-        }
-        shopService.reduceNumber(id,num);
-    }
 
-    @Test
-    public void insertOrder() {
-        int checkid[]={1,4};
-        String username="1";
-        shopService.insertOrder(username,checkid);
 
-    }
+
 
     @Test
     public void queryByUsername() {

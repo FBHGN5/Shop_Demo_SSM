@@ -18,7 +18,7 @@
 	<script src="/resources/js/admin/index.js"></script>
     <%--后台脚本--%>
     <script src="/resources/js/admin/addjs.js"></script>
-    <script type="text/javascript" src="/resources/js/admin/fenye.js"></script>
+  <script type="text/javascript" src="/resources/js/admin/fenye.js"></script>
 
   </head>
 	<body style="height: 100%; margin: 0">

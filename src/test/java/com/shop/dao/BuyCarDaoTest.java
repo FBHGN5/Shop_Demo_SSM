@@ -3,6 +3,8 @@ package com.shop.dao;
 import com.shop.entity.BuyCar;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import org.slf4j.Logger;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -46,7 +48,7 @@ public class BuyCarDaoTest {
 
     @Test
     public void select() {
-        BuyCar buyCar=buyCarDao.select(1);
+        BuyCar buyCar=buyCarDao.select(122);
     }
 
     @Test
@@ -54,4 +56,6 @@ public class BuyCarDaoTest {
         int buycar=buyCarDao.queryAll1();
         System.out.println(buycar);
     }
+
+
 }

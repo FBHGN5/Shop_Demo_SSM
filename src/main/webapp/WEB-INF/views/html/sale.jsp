@@ -22,7 +22,7 @@
 &nbsp;&nbsp;输入商品名:<input class="input" name="name" type="text">
 <br>
 <br>
-&nbsp;输入商品单价:<input class="input" name="price" type="text">
+&nbsp;输入商品单价:<input class="input" name="price" type="number">
 <br>
 <br>
 &nbsp;输入出售数量:<input class="input" name="number" type="number">

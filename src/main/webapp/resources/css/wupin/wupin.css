@@ -14,7 +14,7 @@ span:hover{
 	text-decoration:underline;
 }
 #top{
-	width:100%;
+	width:1920px;
 	height: 30px;
 	background-color: #e3e4e5;
 	line-height: 30px;
@@ -28,7 +28,7 @@ span:hover{
 	right: 430px;
 	font-size:16px;
 }
-#top ul li{float:left;}
+#top ul li{float:left;list-style: none;}
 #top a{
 	margin:auto 10px;
 }
@@ -68,7 +68,7 @@ button{
 	font-size: 16px;
 	cursor: pointer;
 }
-#book ul li{float:left;}
+#book ul li{float:left;list-style: none;}
 #book ul li a{margin:5px 10px 0 -3px;font-size:13px;}
 #book ul li a:hover{color:#B61D1D;}
 #buycar{width:138px; height:40px;position:absolute;top:140px;left:1370px;background-color:#fff;line-height: 40px;border:1px solid #ddd; }
@@ -81,13 +81,13 @@ button{
 #buycar a:hover{
 	color:red;
 }
-hr{ width:100%;
+hr{ width:1920px;
 	border-top:3px solid #EF3838;/* 加粗 */
 	position:absolute;
 	top:230px;
 }
 #under{
-	width:100%;
+	width:1920px;
 	height:730px;
 	position:absolute;
 	top:234px;
