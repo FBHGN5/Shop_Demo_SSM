@@ -26,6 +26,13 @@
         where
         username=#{username}
     </select>
+    <select id="queryAllName" resultType="order">
+        select
+        *from
+        orderlist
+        where
+        name=#{name}
+    </select>
     <delete id="deleteOrder">
         delete from
         orderlist

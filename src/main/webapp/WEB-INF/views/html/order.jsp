@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>我的订单</title>
+    <script src="/resources/js/common/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
         function deleteRow(r)
         {
@@ -11,6 +12,15 @@
             document.getElementById('table').deleteRow(i);
 
         }
+        $(function () {
+            $("#search").click(function () {
+                var name=$("#search").siblings("input").val();
+
+                $.get("/shop/order",{name:name},function (data) {
+                    window.location.href="/shop/order?name="+name;
+                })
+            })
+        })
     </script>
 </head>
 <body>
@@ -20,7 +30,7 @@
             <h3 class="panel-title">面板标题</h3>
         </div>
         <div class="panel-body">
-
+            <div class="search"><input class="setext" type="text" style="width: 300px;" value="${name}">&nbsp;<button id="search" class="btn btn-info">搜索</button></div>
             <table class="table" id="table">
                 <thead>
                 <tr>

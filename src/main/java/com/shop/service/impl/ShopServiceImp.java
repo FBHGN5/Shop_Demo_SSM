@@ -192,6 +192,16 @@ public class ShopServiceImp implements ShopService {
         return orderDao.queryAll(username);
     }
 
+    public List<Order> order2(String username, String name) {
+        if(name.equals(""))
+        {
+            return orderDao.queryAll(username);
+        }
+        else{
+            return orderDao.queryAllName(name);
+        }
+    }
+
     public void del(int id) {
         int del=buyCarDao.delete(id);
     }

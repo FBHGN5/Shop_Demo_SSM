@@ -28,6 +28,7 @@ public interface ShopService {
               String wimg, String bimg,String buycarimg);
     List<BuyCar>  buycar(String username);
     List<Order>  order(String username);
+    List<Order>  order2(String username,String name);
     void del(int id);
     void deletecheckbox(int[] id);
     void deleteOrder(int id);

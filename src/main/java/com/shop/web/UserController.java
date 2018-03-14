@@ -365,13 +365,15 @@ public class UserController {
     用户个人订单页面
      */
     @RequestMapping(value = "/order",method = RequestMethod.GET)
-    public String order(Model model,HttpSession session)
+    public String order(Model model,@RequestParam(value = "name",defaultValue = "",required = true)String name, HttpSession session)
     {  if(session.getAttribute("username")==null)
     {
         return "redirect:/shop/login";
     }
         String username= (String) session.getAttribute("username");
-        List<Order> order=shopService.order(username);
+
+        List<Order> order=shopService.order2(username,name);
+         model.addAttribute("name",name);
          model.addAttribute("order",order);
         return "order";
     }

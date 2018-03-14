@@ -20,7 +20,7 @@
 </div>
 <div id="some">
 <ul>
-<li><a href="#">我的订单</a>|</li>
+<li><a href="/shop/order">我的订单</a>|</li>
 <li><a href="#">关于我们</a>|</li>
 <li><a href="#">企业导购</a>|</li>
 <li><a href="#">网站导航</a>|</li>
