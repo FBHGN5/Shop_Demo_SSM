@@ -336,7 +336,7 @@ public class UserController {
                          HttpServletRequest request) throws IOException {
      //   String path="F:\\Web\\SSM框架学习\\Shop_Demo\\src\\main\\webapp\\resources\\img";
 
-        String path =  request.getSession().getServletContext().getRealPath("../../src/main/webapp/resources/img");
+        String path =  request.getSession().getServletContext().getRealPath("/resources/img");
 
         String[] imgname=new String[file.length];
          for (int i = 0; i < file.length; i++) {
@@ -353,11 +353,11 @@ public class UserController {
             //MultipartFile自带的解析方法
            imgname[i]=fileName;
         }
-      String buycarimg="/resources/img/5.png";
+
        shopService.sale(username,name,price,
                "/resources/img/"+imgname[0],number,
               "/resources/img/"+imgname[1],
-              "/resources/img/"+imgname[2],buycarimg);
+              "/resources/img/"+imgname[2],"/resources/img/"+imgname[3]);
         System.out.println("上传成功!"+path+"test");
    return "redirect:/shop/shouye";
     }

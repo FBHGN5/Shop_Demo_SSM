@@ -78,7 +78,7 @@
                         <input type="checkbox" name="check" value="${list.id}"  class="son_check">
                 </li>
                     <li class="list_con">
-                        <div class="list_img"><a href="javascript:;"><img src="${list.img}" alt=""></a></div>
+                        <div class="list_img"><a href="javascript:;"><img src="${list.img}" style="width: 90px;height: 90px;" alt=""></a></div>
                         <div class="list_text"><a href="/shop/wupin?id=${list.hotid}">${list.name}</a>
                             <input type="hidden" name="name" value="${list.name}">
                         </div>

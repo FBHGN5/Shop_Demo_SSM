@@ -40,6 +40,9 @@
     物品页放大镜图(分辨率800*800): <span id="permitSpan"><input class="input" type="file" name="file" onchange="checkPerm(this);"></span>
     <br>
     <br>
+&nbsp;购物车展示图(分辨率90*90): <span id="permitSpan"><input class="input" type="file" name="file" onchange="checkPerm(this);"></span>
+    <br>
+    <br>
     <input type="submit" value="提交">
 </form>
 </body>
