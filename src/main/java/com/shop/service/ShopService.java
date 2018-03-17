@@ -31,7 +31,7 @@ public interface ShopService {
     List<Order>  order2(String username,String name);
     void del(int id);
     void deletecheckbox(int[] id);
-    void deleteOrder(int id);
+    int deleteOrder(int id);
      void reduceNumber(int[]id,int[]num);
       void insertOrder(int[] number,String username1,int[] checkid);
 

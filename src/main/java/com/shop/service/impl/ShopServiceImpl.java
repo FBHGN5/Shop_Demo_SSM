@@ -194,8 +194,9 @@ public class ShopServiceImpl implements ShopService {
         buyCarDao.deleteCheckBox(id);
     }
 
-    public void deleteOrder(int id) {
-        orderDao.deleteOrder(id);
+    public int deleteOrder(int id) {
+       int update= orderDao.deleteOrder(id);
+       return update;
     }
 
     public void reduceNumber(int[] id, int[] num) {

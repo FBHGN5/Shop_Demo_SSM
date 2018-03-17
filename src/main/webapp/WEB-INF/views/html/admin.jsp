@@ -157,6 +157,7 @@
    </tbody>
 </table>
            <%--分页实现--%>
+           <c:if test="${page.pages>1}">
            <p>每页${page.pageSize}条  当前页${page.size}条${page.pageNum}/${page.pages}页
                记录数${page.total}
            </p>
@@ -187,6 +188,7 @@
                <c:if test="${page.isLastPage==false}">
                    <li><a href="/shop/admin?page=${page.lastPage}">末页</a></li></c:if>
            </ul>
+           </c:if>
 </div>
 </div>
 </div>
@@ -228,6 +230,7 @@
    </c:forEach>
 </tbody>
 </table>
+           <c:if test="${page3.pages>1}">
            <%--分页实现--%>
            <p>每页${page3.pageSize}条  当前页${page3.size}条${page3.pageNum}/${page3.pages}页
                记录数${page3.total}
@@ -259,6 +262,7 @@
                <c:if test="${page3.isLastPage==false}">
                    <li><a href="/shop/admin?page1=${page3.lastPage}&username=${usernames}">末页</a></li></c:if>
            </ul>
+           </c:if>
 </div>
 </div>
 </div>
@@ -298,6 +302,7 @@
    </c:forEach>
 </tbody>
 </table>
+           <c:if test="${page4.pages>1}">
            <%--分页实现--%>
            <p>每页${page4.pageSize}条  当前页${page4.size}条${page4.pageNum}/${page4.pages}页
                记录数${page4.total}
@@ -329,6 +334,7 @@
                <c:if test="${page4.isLastPage==false}">
                    <li><a href="/shop/admin?page2=${page4.lastPage}&usernameorder=${usernameorder}">末页</a></li></c:if>
            </ul>
+           </c:if>
 </div>
 </div>
 </div>
