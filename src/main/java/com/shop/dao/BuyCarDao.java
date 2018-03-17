@@ -17,5 +17,5 @@ public interface BuyCarDao {
     int decrease(@Param("number")int number,@Param("username")String username,@Param("name")String name);
     BuyCar select(int id);
     BuyCar selectu(@Param("username") String username,@Param("name")String name);
-    int update(@Param("number")int number,@Param("id")int id);
+//    int update(@Param("number")int number,@Param("id")int id);
 }

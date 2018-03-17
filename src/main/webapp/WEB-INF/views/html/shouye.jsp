@@ -53,9 +53,9 @@
 </div>
 <div id="buycar"><img src="/resources/img/buycar01.png" style="position:absolute;top:8px;left:37px;">
     <form action="/shop/buycar" method="post">
-        <input type="hidden" name="username" value="${sessionScope.username}">
-        <input
-        type="submit" value="我的购物车" id="text"></form></div>
+		<input type="submit" value="我的购物车" id="text">
+	</form>
+</div>
 </div>
 </div>
 <div id="func" style="position: fixed;top:200px;font-size: 20px;color:#00C4FF">

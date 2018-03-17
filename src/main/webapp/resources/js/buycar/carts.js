@@ -216,8 +216,7 @@ $(document).ready(function () {
         $('.model_bg').fadeIn(300);
         $('.my_model').fadeIn(300);
         $("#del").val($(this).siblings("#sl1").val());
-        // $("#name").val($(this).siblings("#sl2").val());
-        // $("#num").val($(this).siblings("#sl3").val());
+
     });
 
     //关闭模态框
@@ -238,14 +237,19 @@ $(document).ready(function () {
         }
     }
     $("#sub").click(function () {
-        $(":checked").parent().parent().fadeOut("show");
-        window.document.f.action="/shop/delcheck";
-        window.document.f.submit();
-         setInterval(goto,500);
+        if(confirm("确定要删除吗？")==true)
+        {
+            $(":checked").parent().parent().fadeOut("show");
+            window.document.f.action="/shop/delcheck";
+            window.document.f.submit();
+
+        }
+        else {
+            return false;
+        }
+
     });
-    function goto() {
-        window.location.reload();
-    }
+
     //确定按钮，移除商品
     $('.dialog-sure').click(function () {
         $order_lists.remove();
@@ -268,7 +272,7 @@ $(document).ready(function () {
             // 这里是控制器返回值
             /*result是后台返回值*/
             });
-    })
+    });
 
     //======================================总计==========================================
 

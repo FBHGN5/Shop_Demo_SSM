@@ -148,8 +148,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/buycar", method = RequestMethod.POST)
-
-    public String buycar(Model model, @RequestParam("username") String username, HttpSession session) {
+    public String buycar(Model model,  HttpSession session) {
+        String username= (String) session.getAttribute("username");
         if (session.getAttribute("username") == null) {
             return "login";
         }
@@ -173,28 +173,23 @@ public class UserController {
     多选删除
      */
     @RequestMapping(value = "/delcheck", method = RequestMethod.POST)
-    public void delBuycar(Model model, @RequestParam("check") int[] id) {
+    public String delBuycar(Model model, @RequestParam("check") int[] id, @RequestParam("number") int[] number,
+                          @RequestParam("username") String username1,
+                          @RequestParam("name")String name) {
         shopService.deletecheckbox(id);
-//             shopService.increaseNumber(name,num);
-
-
-    }
+        return "forward:/shop/buycar";
+ }
 
     /*
     购物车结算生成订单
      */
     @RequestMapping(value = "/clearing", method = RequestMethod.POST)
-    public void clearing(Model model,
-                         @RequestParam("id") int[] id,
+    public String clearing(Model model,
                          @RequestParam("number") int[] number,
                          @RequestParam("username") String username1,
                          @RequestParam("check") int[] checkid) {
-        for (int i = 0; i < id.length; i++) {
-            int update = buyCarDao.update(number[i], id[i]);
-        }
-
-        shopService.insertOrder(username1, checkid);
-        System.out.println("成功");
+      shopService.insertOrder(number,username1, checkid);
+      return "forward:/shop/buycar";
 /*
 在此创建一张确定下单的订单表
  */
@@ -233,12 +228,9 @@ public class UserController {
 /*
 热卖商品分页
  */
-
-            PageHelper.startPage(page, 4);
-            List<HotSale> hotSale = shopService.getlist();
-            PageInfo<HotSale> p = new PageInfo<HotSale>(hotSale);
+            PageInfo<HotSale> p = shopService.findpage(page);
             model.addAttribute("page", p);
-            model.addAttribute("hotsale", hotSale);
+
 /*
 用户分页
  */
@@ -248,39 +240,16 @@ public class UserController {
 /*
 购物车分页
  */
-            PageHelper.startPage(page1, 5);
-
-            if (username.equals("")) {
-                List<BuyCar> buycar = shopService.getAllBuyCar();
-                PageInfo<BuyCar> page3 = new PageInfo<BuyCar>(buycar);
-                model.addAttribute("page3", page3);
-                model.addAttribute("buycar", buycar);
-            } else {
-                List<BuyCar> buycar = shopService.buycar(username);
-                PageInfo<BuyCar> page3 = new PageInfo<BuyCar>(buycar);
+                PageInfo<BuyCar> page3 = shopService.findpage1(page1,username);
                 model.addAttribute("usernames", username);
                 model.addAttribute("page3", page3);
-                model.addAttribute("buycar", buycar);
-            }
-
-
-             /*
+          /*
              订单分页
               */
-            PageHelper.startPage(page2, 6);
-            if (usernameorder.equals("")) {
-                List<Order> order = shopService.getAllOrderlist();
-                PageInfo<Order> page4 = new PageInfo<Order>(order);
-                model.addAttribute("page4", page4);
-                model.addAttribute("order", order);
-            } else {
-                List<Order> order = shopService.order(usernameorder);
-                PageInfo<Order> page4 = new PageInfo<Order>(order);
+                PageInfo<Order> page4 = shopService.findpage2(page2,usernameorder);
                 model.addAttribute("usernameorder", usernameorder);
                 model.addAttribute("page4", page4);
-                model.addAttribute("order", order);
-            }
-            return "admin";
+                return "admin";
         }
 
     }
@@ -382,8 +351,9 @@ public class UserController {
 删除订单
  */
 @RequestMapping(value = "/delorder",method = RequestMethod.GET)
-public void delorder(Model model,@RequestParam("id") int id)
+public String delorder(Model model,@RequestParam("id") int id)
 {   shopService.deleteOrder(id);
+    return "redirect:/shop/order";
 }
 
     /*

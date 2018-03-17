@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import com.github.pagehelper.PageInfo;
 import com.shop.dto.*;
 import com.shop.entity.BuyCar;
 import com.shop.entity.HotSale;
@@ -27,12 +28,15 @@ public interface ShopService {
              int price,String img,int number,
               String wimg, String bimg,String buycarimg);
     List<BuyCar>  buycar(String username);
-    List<Order>  order(String username);
     List<Order>  order2(String username,String name);
     void del(int id);
     void deletecheckbox(int[] id);
     void deleteOrder(int id);
      void reduceNumber(int[]id,int[]num);
-      void insertOrder(String username1,int[] checkid);
+      void insertOrder(int[] number,String username1,int[] checkid);
+
 //    void increaseNumber(String[] name,int[] num);
+      PageInfo<HotSale> findpage(Integer page);
+    PageInfo<BuyCar> findpage1(Integer page1,String username);
+    PageInfo<Order> findpage2(Integer page2,String usernameorder);
 }

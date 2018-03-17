@@ -141,7 +141,7 @@
       </tr>
    </thead>
    <tbody>
-   <c:forEach var="hotsale" items="${hotsale}">
+   <c:forEach var="hotsale" items="${page.list}">
       <tr>
          <td>${hotsale.name}</td>
          <td>${hotsale.price}</td>
@@ -213,7 +213,7 @@
      </tr>
    </thead>
    <tbody>
-   <c:forEach var="buycar" items="${buycar}">
+   <c:forEach var="buycar" items="${page3.list}">
       <tr>
          <td>${buycar.username}</td>
          <td>${buycar.name}</td>
@@ -284,7 +284,7 @@
       </tr>
    </thead>
    <tbody>
-   <c:forEach var="order" items="${order}">
+   <c:forEach var="order" items="${page4.list}">
       <tr>
          <td>${order.username}</td>
          <td>${order.name}</td>

@@ -30,7 +30,7 @@ public class HotSaleDaoTest {
 
     @Test
     public void update() {
-        hotSaleDao.update(12222,1,1);
+        hotSaleDao.update(1,5551,555);
     }
 
     @Test

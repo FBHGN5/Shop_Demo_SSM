@@ -1,5 +1,7 @@
 package com.shop.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.shop.dao.*;
 import com.shop.dto.Mod;
 import com.shop.dto.Reg;
@@ -19,7 +21,7 @@ import java.util.List;
 写上@Service创建这个类对象
  */
 @Service
-public class ShopServiceImp implements ShopService {
+public class ShopServiceImpl implements ShopService {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     /*
     @Autowired自动注入该对象
@@ -48,13 +50,10 @@ public class ShopServiceImp implements ShopService {
         result=2;用户密码错误
          */
         if (user!=null&&password.equals(user.getPassword())) {
-            System.out.println(password+"=password1");
-            System.out.println(user.getPassword()+"=password2");
             if(user.getState()==2)
             /*
           管理员
              */
-
             {
                 result=-1;
                 logger.info("管理员上线");
@@ -70,8 +69,7 @@ public class ShopServiceImp implements ShopService {
                      result = 0;
                      System.out.println(user.getUsername()+"登陆成功!");
                 }
-
-            }
+         }
         }
         /*
         没注册
@@ -130,7 +128,10 @@ public class ShopServiceImp implements ShopService {
 
     }
 
-    public List<HotSale> getlist() {return hotSaleDao.queryAll();}
+    public List<HotSale> getlist() {
+        return hotSaleDao.queryAll();
+    }
+
 
     public List<User> getAll() {
         return userDao.queryAll();
@@ -164,21 +165,6 @@ public class ShopServiceImp implements ShopService {
            buyCarDao.decrease(number,username,name);
        }
 
-//               try {
-//               BuyCar buycar1=buyCarDao.selectu(username,name);
-//               System.out.println(buycar.getNumber()+"asdd");
-//               /*
-//               如果是另外一个用户购买同一商品执行异常
-//                */
-//               }catch (Exception e)
-//               {   int i=buyCarDao.queryAll1();
-//               System.out.println(i);
-//               buyCarDao.insertBuyCar(img,name,price,username,number,i+1,kucun);
-//               }
-
-
-
-//        int up=hotSaleDao.reduceNumber(id,num);
         return 1;
     }
 
@@ -186,13 +172,11 @@ public class ShopServiceImp implements ShopService {
         hotSaleDao.insert(username,name,price,img,number,wimg,bimg,buycarimg);
     }
 
-    public   List<BuyCar> buycar(String username) { return buyCarDao.queryAll(username);}
+    public   List<BuyCar> buycar(String username) {
+       return buyCarDao.queryAll(username);
+        }
 
-    public List<Order> order(String username) {
-        return orderDao.queryAll(username);
-    }
-
-    public List<Order> order2(String username, String name) {
+   public List<Order> order2(String username, String name) {
         if(name.equals(""))
         {
             return orderDao.queryAll(username);
@@ -221,7 +205,7 @@ public class ShopServiceImp implements ShopService {
          }
     }
 
-    public void insertOrder(String username1, int[] checkid) {
+    public void insertOrder(int[] number,String username1, int[] checkid) {
         String username=username1;
         String[] img=new String[checkid.length];
         String[] name=new String[checkid.length];
@@ -240,15 +224,42 @@ public class ShopServiceImp implements ShopService {
       {
           orderDao.insertOrder(img[i],name[i],price[i],username,num[i],checkid[i],hotid[i]);
       }
+        for (int i = 0; i < checkid.length; i++) {
+            int update = buyCarDao.delete(checkid[i]);
+        }
       }
 
+    public PageInfo<HotSale> findpage(Integer page) {
+        PageHelper.startPage(page, 5);
+        List<HotSale> list=getlist();
+        return new PageInfo<HotSale>(list);
+    }
 
-//    public void increaseNumber(String[] name, int[] num) {
-//        for(int i=0;i<num.length;i++)
-//        {
-//            hotSaleDao.update(name[i],num[i]);
-//        }
-//    }
+    public PageInfo<BuyCar> findpage1(Integer page1,String username) {
+        PageHelper.startPage(page1, 5);
+        List<BuyCar> buycar;
+        if(username.equals(""))
+        {
+             buycar= buyCarDao.queryAllb();
 
+        }
+        else{
+             buycar= buyCarDao.queryAll(username);
+        }
+        return new PageInfo<BuyCar>(buycar);
+    }
+
+    public PageInfo<Order> findpage2(Integer page2,String usernameorder) {
+        PageHelper.startPage(page2, 5);
+        List<Order> order;
+        if(usernameorder.equals(""))
+        {
+           order=orderDao.queryAllorder();
+        }
+        else {
+            order=orderDao.queryAll(usernameorder);
+        }
+        return new PageInfo<Order>(order);
+    }
 
 }

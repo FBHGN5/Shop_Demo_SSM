@@ -32,7 +32,7 @@
       <li><a href="#">网站导航</a>&nbsp;&nbsp;|</li>
       <li><a href="#">企业采购</a>&nbsp;&nbsp;|</li>
       <li><a href="#">关于我们</a>&nbsp;&nbsp;|</li>
-      <li><a href="#">我的订单</a>&nbsp;&nbsp;|</li>
+      <li><a href="/shop/order">我的订单</a>&nbsp;&nbsp;|</li>
     </ul></div>
     <div id="img">
       <img style="position:absolute;top:4px;" src="/resources/img/ReturnFirstPage.png" alt="">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="order_content">
-                <form name="f" method="post" action="" target="hidden">
+                <form name="f" method="POST" action="">
     <c:forEach var="list" items="${list}">
 
         <ul class="order_lists">
@@ -105,8 +105,7 @@
                     <li class="list_op">
                         <p class="del"><a href="javascript:;" class="delBtn">移除商品</a>
                             <input id="sl1" type="hidden" name="id"  value="${list.id}">
-                            <%--<input id="sl2" type="hidden"  value="${list.name}">--%>
-                            <%--<input id="sl3" type="hidden"  value="${list.number}">--%>
+
                         </p>
                     </li>
                 </ul>
@@ -190,8 +189,5 @@
             </div>
  <input type="hidden" id="del" value="">
 <input type="hidden" name="username" value="${sessionScope.username}">
- <%--<input type="hidden" id="name" value="">--%>
- <%--<input type="hidden" id="num" value="">--%>
-            <iframe name="hidden" id="hidden" style="display:none" target="hidden">
 </body>
 </html>
