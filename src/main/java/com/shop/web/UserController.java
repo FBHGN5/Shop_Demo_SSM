@@ -351,11 +351,15 @@ public class UserController {
 删除订单
  */
 @RequestMapping(value = "/delorder",method = RequestMethod.GET)
-public String delorder(Model model,@RequestParam("id") int id)
-{   shopService.deleteOrder(id);
-    return "redirect:/shop/order";
+public String delorder(Model model,@RequestParam("id") int id) {
+    try {
+        shopService.deleteOrder(id);
+        return "redirect:/shop/order";
+    } catch (Exception e) {
+        logger.error("该商品不存在！");
+        return "redirect:/shop/order";
+    }
 }
-
     /*
 文件上传下载大全
  */
