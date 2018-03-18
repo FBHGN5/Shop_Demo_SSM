@@ -170,10 +170,9 @@
                <c:if test="${page.hasPreviousPage==false}">
                    <li><a>&laquo;</a></li></c:if>
 
-               <c:set var="index" value="0" />
-             <c:forEach begin="1" end="${page.pages}">
-                 <c:set var="index" value="${index+1}" />
-                       <c:if test="${page.pageNum==index}"><li>
+
+             <c:forEach begin="1" end="${page.pages}" var="index">
+               <c:if test="${page.pageNum==index}"><li>
                            <a style="background-color: #337ab7;color:#fff">${index}</a></li>
                        </c:if>
                    <c:if test="${page.pageNum!=index}">
@@ -244,9 +243,9 @@
                <c:if test="${page3.hasPreviousPage==false}">
                    <li><a>&laquo;</a></li></c:if>
 
-               <c:set var="index" value="0" />
-               <c:forEach begin="1" end="${page3.pages}">
-                   <c:set var="index" value="${index+1}" />
+
+               <c:forEach begin="1" end="${page3.pages}" var="index">
+
                    <c:if test="${page3.pageNum==index}"><li>
                        <a style="background-color: #337ab7;color:#fff">${index}</a></li>
                    </c:if>
@@ -316,10 +315,9 @@
                <c:if test="${page4.hasPreviousPage==false}">
                    <li><a>&laquo;</a></li></c:if>
 
-               <c:set var="index" value="0" />
-               <c:forEach begin="1" end="${page4.pages}">
-                   <c:set var="index" value="${index+1}" />
-                   <c:if test="${page4.pageNum==index}"><li>
+
+               <c:forEach begin="1" end="${page4.pages}" var="index">
+                 <c:if test="${page4.pageNum==index}"><li>
                        <a style="background-color: #337ab7;color:#fff">${index}</a></li>
                    </c:if>
                    <c:if test="${page4.pageNum!=index}">
