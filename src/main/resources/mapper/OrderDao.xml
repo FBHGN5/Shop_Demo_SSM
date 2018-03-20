@@ -31,7 +31,7 @@
         *from
         orderlist
         where
-        name=#{name}
+        name like concat('%',#{name},'%')
     </select>
     <delete id="deleteOrder">
         delete from
