@@ -58,12 +58,12 @@ public class GetMessageCode {
         JSONObject json=new JSONObject(result.toString());
         String respCode=json.getString("respCode");
         String defaultRespCode="00000";
-        return rod;
-//        if(defaultRespCode.equals(respCode)){
-//            return rod;
-//        }else{
-//            return rod;
-//        }
+
+        if(defaultRespCode.equals(respCode)){
+            return rod;
+        }else{
+            return rod;
+        }
     }
     //定义一个请求参数拼接方法
     public static String getQueryArgs(String accountSid,String smsContent,String to,String timestamp,String sig,String respDataType){

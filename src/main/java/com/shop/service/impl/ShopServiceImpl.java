@@ -117,7 +117,7 @@ public class ShopServiceImpl implements ShopService {
                logger.error("该用户名已注册！");
                return new Reg("fail");
            } else {
-               logger.info("恭喜你注册成功！");
+               logger.info("恭喜你注册成功！"+username);
                return new Reg("success");
            }
        }

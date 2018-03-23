@@ -48,7 +48,6 @@ window.onload=function(){
   var check=document.getElementById("check");
   check.onclick=function(){
   var text=document.getElementById("code");
-console.log(text.value);
   var us3=document.getElementById("us3");
   var us5=document.getElementById("us5");
   var us1=document.getElementById("us1");
