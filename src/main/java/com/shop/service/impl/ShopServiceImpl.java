@@ -39,8 +39,16 @@ public class ShopServiceImpl implements ShopService {
      return userDao.selusername(username) ;
     }
 
+    public User queryByPhone(String username) {
+        return  userDao.queryByPhone(username);
+    }
+
     public int login(String username, String password) {
         User user=userDao.selusername(username);
+        if(user==null)
+        {
+            user=userDao.queryByPhone(username);
+        }
         int result;
         /*
         result=-1;管理员密码验证正确
@@ -96,15 +104,24 @@ public class ShopServiceImpl implements ShopService {
         userDao.update2(username);
     }
 
-    public Reg register(String username, String password) {
-        int count = userDao.insertUser(username, password);
-        if (count == 0) {
-            logger.error("该用户名已注册！");
-            return new Reg("fail");
-        } else {
-            logger.info("恭喜你注册成功！");
-            return new Reg("success");
-        }
+    public Reg register(String username, String password,String phone) {
+
+       User user=userDao.queryByPhone(phone);
+       if(user!=null)
+       {
+           return new Reg("fail");
+       }
+       else{
+           int count = userDao.insertUser(username, password,phone);
+           if (count == 0) {
+               logger.error("该用户名已注册！");
+               return new Reg("fail");
+           } else {
+               logger.info("恭喜你注册成功！");
+               return new Reg("success");
+           }
+       }
+
     }
 
     public Mod update(String username, String old, String password) {
@@ -225,9 +242,9 @@ public class ShopServiceImpl implements ShopService {
       {
           orderDao.insertOrder(img[i],name[i],price[i],username,num[i],checkid[i],hotid[i]);
       }
-        for (int i = 0; i < checkid.length; i++) {
-            int update = buyCarDao.delete(checkid[i]);
-        }
+
+            int update = buyCarDao.deleteCheckBox(checkid);
+
       }
 
     public PageInfo<HotSale> findpage(Integer page) {

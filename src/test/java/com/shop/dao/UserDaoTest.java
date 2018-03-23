@@ -38,7 +38,7 @@ public class UserDaoTest {
     public void insertUser() {
         String username="zj2l";
         String password="123";
-        int count=userDao.insertUser(username,password);
+        int count=userDao.insertUser(username,password,"2");
 
         System.out.println(count);
     }
@@ -56,6 +56,12 @@ public class UserDaoTest {
     @Test
     public void selusername() {
         User user=userDao.selusername("1");
+        logger.info("user{}",user);
+    }
+
+    @Test
+    public void queryByPhone() {
+        User user=userDao.queryByPhone("15123045228");
         logger.info("user{}",user);
     }
 }

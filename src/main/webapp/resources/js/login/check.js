@@ -125,9 +125,12 @@ window.location.href="/shop/shouye";
 
 else{
   $("#zh3").show(300);
-   // $.Pop('验证码错误',{Animation:'layer-rollIn'});
     generateBig();
-  img();
+    img();
+    $.post("/shop/destroy",{},function () {
+
+    });
+
   check.value="登陆";
 }
 }

@@ -16,6 +16,7 @@
 
 .user{width:300px;height:52px;background-color: white;float: right;font-size:17px;font-family: "Microsoft YaHei";border: none;outline: none; }
 .lab{width:398px;height:52px;border:1px solid #ddd;margin: 40px 0;line-height: 52px;position: relative;}
+
 #welzc{
   position: absolute;
   top: 30px;
@@ -74,4 +75,19 @@ i{
     color: #999;
     font-family:"Microsoft YaHei";
     margin-right: 300px;
+}
+#btn{
+  position: relative;
+  top:-51px;
+  left:299px;
+  height:299px;
+  width: 100px;
+  height: 52px;
+  outline: none;
+  background-color: #DA1414;
+  cursor: pointer;
+  font-family:"Microsoft YaHei";
+  font-size: 15px;
+  color: #fff;
+
 }

@@ -83,6 +83,7 @@
          <th>用户名</th>
          <th>密码</th>
          <th>用户状态</th>
+          <th>手机号</th>
          <th>注册时间</th>
          <th>操作</th>
           <th>备注</th>
@@ -94,6 +95,7 @@
            <td>${user.username}</td>
            <td><input  style="width: 50px;border: 0;outline: 0;background-color: #F30F0F;" disabled=＂disabled＂ type="password" value="${user.password}"></td>
            <td>${user.state}</td>
+           <td>${user.phone}</td>
            <td><fmt:formatDate value="${user.createTime}"   pattern="yyyy-MM-dd HH:mm:ss" type="date" dateStyle="long" /></td>
            <td>无法对本账户操作</td>
            <td>用户状态:1封号,0表示正常,2管理员</td>
@@ -103,6 +105,7 @@
                <td>${user.username}</td>
                <td><input class="password"  disabled=＂disabled＂ type="password" value="${user.password}"></td>
                <td class="state">${user.state}</td>
+               <td>${user.phone}</td>
                <td><fmt:formatDate value="${user.createTime}"   pattern="yyyy-MM-dd HH:mm:ss" type="date" dateStyle="long" /></td>
                <td class="href"><a href="javascript:void(0)">删除</a>
                    <a href="javascript:void(0)" class="fenghao">封号</a>
@@ -161,6 +164,7 @@
            <p>每页${page.pageSize}条  当前页${page.size}条${page.pageNum}/${page.pages}页
                记录数${page.total}
            </p>
+               <div class="test">
            <ul class="pagination">
               <c:if test="${page.isFirstPage==true}"><li><a>首页</a></li></c:if>
                <c:if test="${page.isFirstPage==false}">
@@ -188,6 +192,7 @@
                    <li><a href="/shop/admin?page=${page.lastPage}">末页</a></li></c:if>
            </ul>
            </c:if>
+               </div>
 </div>
 </div>
 </div>
@@ -234,6 +239,7 @@
            <p>每页${page3.pageSize}条  当前页${page3.size}条${page3.pageNum}/${page3.pages}页
                记录数${page3.total}
            </p>
+           <div class="test">
            <ul class="pagination">
                <c:if test="${page3.isFirstPage==true}"><li><a>首页</a></li></c:if>
                <c:if test="${page3.isFirstPage==false}">
@@ -262,6 +268,7 @@
                    <li><a href="/shop/admin?page1=${page3.lastPage}&username=${usernames}">末页</a></li></c:if>
            </ul>
            </c:if>
+           </div>
 </div>
 </div>
 </div>
@@ -306,6 +313,7 @@
            <p>每页${page4.pageSize}条  当前页${page4.size}条${page4.pageNum}/${page4.pages}页
                记录数${page4.total}
            </p>
+           <div class="test">
            <ul class="pagination">
                <c:if test="${page4.isFirstPage==true}"><li><a>首页</a></li></c:if>
                <c:if test="${page4.isFirstPage==false}">
@@ -333,6 +341,7 @@
                    <li><a href="/shop/admin?page2=${page4.lastPage}&usernameorder=${usernameorder}">末页</a></li></c:if>
            </ul>
            </c:if>
+           </div>
 </div>
 </div>
 </div>

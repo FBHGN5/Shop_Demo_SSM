@@ -47,15 +47,16 @@ public class UserController {
                      @RequestParam("password") String password, Model model, HttpSession session,HttpServletResponse response) {
 
         int result = shopService.login(username, password);
+        User user=shopService.queryByPhone(username);
         if (result == -1 || result == 0) {
-            session.setAttribute("username", username);
+            session.setAttribute("username", user.getUsername());
             //存sessionId的cookie
             Cookie cookieSId = new Cookie("JSESSIONID",session.getId());
             cookieSId.setMaxAge(60*60);
             cookieSId.setPath("/");
             response.addCookie(cookieSId);
         }
-        System.out.println("用户状态：0登录成功,1账户错误,2密码错误,3封号,-1管理员。 现在状态:" + result);
+       logger.info("用户状态：0登录成功,1账户错误,2密码错误,3封号,-1管理员。 现在状态:" + result);
         return result;
     }
 
@@ -64,7 +65,10 @@ public class UserController {
         session.invalidate();
         return "login";
     }
-
+    @RequestMapping(value = "/destroy", method = RequestMethod.POST)
+    public void destroy(HttpSession session) {
+        session.invalidate();
+    }
     /*
     首页
      */
@@ -96,11 +100,12 @@ public class UserController {
      */
     @RequestMapping(value = "/reg", method = RequestMethod.POST)
     @ResponseBody
-    public Reg reg(Model model, @RequestParam("username") String username, @RequestParam("password") String password) {
-        Reg reg = shopService.register(username, password);
+    public Reg reg(Model model, @RequestParam("username") String username, @RequestParam("password") String password,
+                   @RequestParam("phone")String phone) {
+        Reg reg = shopService.register(username, password,phone);
         String result;
         result = reg.getResult();
-        System.out.println(result);
+       logger.info("注册"+result);
         return new Reg(result);
 
     }
@@ -143,7 +148,7 @@ public class UserController {
                    @RequestParam("price") int price, @RequestParam("username") String username
             , @RequestParam("number") int number, @RequestParam("id") int id, @RequestParam("kucun") int kucun) {
         int i = shopService.buy(img, name, price, username, number, id, kucun);
-        System.out.println("购买成功");
+       logger.info(username+"购买成功");
         return i;
     }
 

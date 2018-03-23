@@ -36,7 +36,7 @@ public class ShopServiceImpTest {
 
     @Test
     public void register() {
-        Reg reg= shopService.register("dd","1");
+        Reg reg= shopService.register("111","1","1512223045228");
         System.out.println(reg.getResult());
     }
 

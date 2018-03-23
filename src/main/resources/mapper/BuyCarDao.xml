@@ -6,7 +6,7 @@
 <mapper namespace="com.shop.dao.BuyCarDao">
      <insert id="insertBuyCar">
         insert ignore  into buycar(img,name,price,username,number,hotid,kucun)
-        value(#{img},#{name},#{price},#{username},#{number},#{id},#{kucun})
+        values(#{img},#{name},#{price},#{username},#{number},#{id},#{kucun})
     </insert>
     <select id="queryAll" resultType="BuyCar">
         select*

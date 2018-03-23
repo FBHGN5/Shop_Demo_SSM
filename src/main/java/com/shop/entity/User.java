@@ -5,8 +5,17 @@ import java.util.Date;
 public class User {
     private String username;
     private String password;
+    private String phone;
     private Date createTime;
     private int state;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public int getState() {
         return state;
@@ -45,6 +54,7 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
                 ", createTime=" + createTime +
                 ", state=" + state +
                 '}';

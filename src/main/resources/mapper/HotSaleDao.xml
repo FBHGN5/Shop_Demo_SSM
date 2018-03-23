@@ -35,7 +35,7 @@
     </update>
     <insert id="insert">
       insert ignore into hotsale(username,name,price,img,number,wimg,bimg,buycarimg)
-        value(#{username},#{name},#{price},#{img},#{number},#{wimg},#{bimg},#{buycarimg})
+        values(#{username},#{name},#{price},#{img},#{number},#{wimg},#{bimg},#{buycarimg})
 
     </insert>
     <delete id="deleteById">

@@ -12,10 +12,11 @@ import java.util.List;
 
 public interface ShopService {
     User queryByUsername(String username);
+    User queryByPhone(String username);
     int login(String username, String password);
     void update(String username);
     void update2(String username);
-    Reg register(String username,String password);
+    Reg register(String username,String password,String phone);
     Mod update(String username,String old,String password);
    List<HotSale> getlist();
    List<User> getAll();

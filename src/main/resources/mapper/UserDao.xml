@@ -11,14 +11,21 @@
         where username=#{username}
 
     </select>
+    <select id="queryByPhone" resultType="user">
+        select
+        *
+        from user
+        where phone=#{phone}
+
+    </select>
     <select id="queryAll" resultType="user">
         select
         *
         from user
   </select>
    <insert id="insertUser">
-    insert ignore into user(username,password,state)
-    value(#{username},#{password},0)
+    insert ignore into user(username,password,state,phone)
+    values(#{username},#{password},0,#{phone})
  </insert>
     <update id="updateUser">
         update user set

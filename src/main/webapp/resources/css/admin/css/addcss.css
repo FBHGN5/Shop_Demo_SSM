@@ -85,9 +85,16 @@
     height: 35px;
 
 }
-.pagination{
+.test{
     position: relative;
-    left: 430px;
+    height: 20px;
+}
+.test ul{
+
+    position: absolute;
+    left: 50%;
+    top: -30%;
+    transform:translate(-50%,-50%);
 }
 p{
     color: red;

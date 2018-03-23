@@ -17,12 +17,12 @@
 		<div id="user"  style="display:none;"><h2 style="margin: 20px 1px;">&nbsp;用户登录</h2>
 			<div id="user1">
 				<div id="text"><label for=""><i class="iconfont" title="用户名" style="background-image:url(/resources/img/user.jpg);"></i></label>
-					<input type="text" style="width: 260px;height:41px; font-size: 17px;"  name="username"  id="username" class="cn" placeholder=" 登陆账号"></div>
+					<input type="text" style="width: 260px;height:41px; font-size: 17px;"  name="username"  id="username" class="cn" placeholder="请输入用户名或手机号"></div>
 				<div id="noexist" class="common">
 					<p id="zh1">用户名不存在，请检查用户名。</p>
 				</div>
 				<div><label for=""><i class="iconfont" title="密码" style="background-image:url(/resources/img/pwd.png);"></i></label>
-					<input type="password" style="width: 260px;height:41px;font-size: 17px;"  id="password"  class="cn" placeholder=" 登录密码">
+					<input type="password" style="width: 260px;height:41px;font-size: 17px;"  id="password"  class="cn" placeholder="请输入登录密码">
 				</div>
 				<div id="error" class="common">
 					<p id="zh2">密码错误,请检查密码。</p>

@@ -6,7 +6,7 @@
 <mapper namespace="com.shop.dao.OrderDao">
     <insert id="insertOrder">
         insert ignore into orderlist(img,name,price,username,number,id,hotid)
-        value(#{img},#{name},#{price},#{username},#{number},#{id},#{hotid})
+        values(#{img},#{name},#{price},#{username},#{number},#{id},#{hotid})
     </insert>
     <select id="sec" resultType="order">
     select
