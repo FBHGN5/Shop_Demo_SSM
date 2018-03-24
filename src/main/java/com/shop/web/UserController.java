@@ -46,16 +46,8 @@ public class UserController {
     public int check(@RequestParam("username") String username,
                      @RequestParam("password") String password, Model model, HttpSession session,HttpServletResponse response) {
 
-        int result = shopService.login(username, password);
-        User user=shopService.queryByPhone(username);
-        if (result == -1 || result == 0) {
-            session.setAttribute("username", user.getUsername());
-            //存sessionId的cookie
-            Cookie cookieSId = new Cookie("JSESSIONID",session.getId());
-            cookieSId.setMaxAge(60*60);
-            cookieSId.setPath("/");
-            response.addCookie(cookieSId);
-        }
+        int result = shopService.login(username, password,session,response);
+
        logger.info("用户状态：0登录成功,1账户错误,2密码错误,3封号,-1管理员。 现在状态:" + result);
         return result;
     }

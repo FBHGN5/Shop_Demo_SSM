@@ -15,6 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /*
@@ -43,7 +46,7 @@ public class ShopServiceImpl implements ShopService {
         return  userDao.queryByPhone(username);
     }
 
-    public int login(String username, String password) {
+    public int login(String username, String password, HttpSession session,HttpServletResponse response) {
         User user=userDao.selusername(username);
         if(user==null)
         {
@@ -65,7 +68,12 @@ public class ShopServiceImpl implements ShopService {
             {
                 result=-1;
                 logger.info("管理员上线");
-                System.out.println("管理员上线!");
+                session.setAttribute("username", user.getUsername());
+                //存sessionId的cookie
+                Cookie cookieSId = new Cookie("JSESSIONID",session.getId());
+                cookieSId.setMaxAge(60*60);
+                cookieSId.setPath("/");
+                response.addCookie(cookieSId);
             }
             else {
                  if(user.getState()==1)
@@ -75,6 +83,12 @@ public class ShopServiceImpl implements ShopService {
                 }
                 else{
                      result = 0;
+                     session.setAttribute("username", user.getUsername());
+                     //存sessionId的cookie
+                     Cookie cookieSId = new Cookie("JSESSIONID",session.getId());
+                     cookieSId.setMaxAge(60*60);
+                     cookieSId.setPath("/");
+                     response.addCookie(cookieSId);
                      System.out.println(user.getUsername()+"登陆成功!");
                 }
          }

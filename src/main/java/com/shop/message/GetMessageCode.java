@@ -62,7 +62,7 @@ public class GetMessageCode {
         if(defaultRespCode.equals(respCode)){
             return rod;
         }else{
-            return rod;
+            return defaultRespCode;
         }
     }
     //定义一个请求参数拼接方法

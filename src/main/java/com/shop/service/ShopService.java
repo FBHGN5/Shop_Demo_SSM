@@ -7,13 +7,15 @@ import com.shop.entity.HotSale;
 import com.shop.entity.Order;
 import com.shop.entity.User;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
 public interface ShopService {
     User queryByUsername(String username);
     User queryByPhone(String username);
-    int login(String username, String password);
+    int login(String username, String password, HttpSession session, HttpServletResponse response);
     void update(String username);
     void update2(String username);
     Reg register(String username,String password,String phone);
