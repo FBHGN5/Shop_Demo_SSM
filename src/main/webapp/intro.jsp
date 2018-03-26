@@ -16,10 +16,7 @@
     <!-- //第一张 -->
     <div class="sections">
         <div class="section" id="section0">
-            <div id="deo"><video id="video" src="/resources/img/com.webm"  autoplay="autoplay"  loop></video></div>
-            </video>
-
-            <div class="mid">
+          <div class="mid">
                 <p class="welcome">欢迎加入我们
                 <hr>
                 <br>
@@ -49,7 +46,6 @@
         </div>
         <!-- 第三张 -->
         <div  class="section" id="section2">
-            <div id="vid"><video id="video1" src="/resources/img/phone.webm"  autoplay="autoplay"  muted loop></video></div>
             <div id="sec2" class="zc" >
                 <p class="zc1">联系我们</p>
                 <hr>

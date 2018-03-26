@@ -1,13 +1,12 @@
 function show(){  
 var docTop = $(document).scrollTop();  //获取滚动条位置docTop>=$(document).height()-$(window).height()在底部
-var Media = document.getElementById("video"); 
-if($("ul li").first().attr('class')=="active")//attr() 方法设置或返回被选元素的属性值。
-    {Media.play();
+    if($("ul li").first().attr('class')=="active")//attr() 方法设置或返回被选元素的属性值。
+    {
         $("#title").css("background","");
         $(".zc").hide();
     }
     else
-        { Media.pause();
+        {
             $("#title").css("background","rgba(0,162,230,0.8)");}
         }
         setInterval(show,1000)
