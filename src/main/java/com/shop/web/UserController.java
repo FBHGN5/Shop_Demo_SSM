@@ -212,6 +212,7 @@ public class UserController {
         String name=(String)session.getAttribute("username");
           User user1=shopService.queryByUsername(name);
           logger.info("user{}",user1);
+          System.out.println(usernameorder);
         if (session.getAttribute("username")==null) {
 
             return "redirect:/shop/login";
@@ -292,16 +293,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/ins", method = RequestMethod.POST)
-
     public String uploadhotsale(@RequestParam("username")String username,
                          @RequestParam("name")String name,
                          @RequestParam("price")int price,
                          @RequestParam("number")int number,
 
                          @RequestParam("file") MultipartFile[] file,
-                         HttpServletRequest request) throws IOException {
+                         HttpServletRequest request,Model model) throws IOException {
      //   String path="F:\\Web\\SSM框架学习\\Shop_Demo\\src\\main\\webapp\\resources\\img";
-
+         HotSale hotSale=shopService.findByName(name);
+         if(hotSale!=null)
+         {  model.addAttribute("error","该商品名已经存在！！");
+            return "sale";
+         }
         String path =  request.getSession().getServletContext().getRealPath("/resources/img");
 
         String[] imgname=new String[file.length];
@@ -351,7 +355,7 @@ public class UserController {
 public String delorder(Model model,@RequestParam("id") int id) {
 
        int update= shopService.deleteOrder(id);
-        return "redirect:/shop/order";
+       return "redirect:/shop/order";
 
 }
     /*

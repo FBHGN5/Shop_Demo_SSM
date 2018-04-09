@@ -16,4 +16,5 @@ public interface HotSaleDao {
     int insert(@Param("username") String username,@Param("name") String name,
                @Param("price")int price,@Param("img") String img,@Param("number") int number,
                @Param("wimg") String wimg,@Param("bimg") String bimg,@Param("buycarimg")String buycarimg);
+    HotSale findByName(String name);
 }

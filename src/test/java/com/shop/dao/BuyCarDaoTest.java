@@ -22,10 +22,7 @@ public class BuyCarDaoTest {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Test
     public void insertBuyCar() {
-      logger.error("ddddd");
-        logger.warn("ddddd");
-        logger.info("ddddd");
-        logger.error("ddddd");
+      buyCarDao.insertBuyCar("1","1",2,"1",1,1,2);
     }
 
     @Test

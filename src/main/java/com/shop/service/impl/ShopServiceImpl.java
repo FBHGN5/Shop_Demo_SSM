@@ -184,6 +184,10 @@ public class ShopServiceImpl implements ShopService {
         return hotSaleDao.deleteById(id);
     }
 
+    public HotSale findByName(String name) {
+        return  hotSaleDao.findByName(name);
+    }
+
     public int buy(String img, String name, int price,String username,int number,int id,int kucun) {
         BuyCar buycar=buyCarDao.selectu(username,name);
         /*
@@ -213,7 +217,7 @@ public class ShopServiceImpl implements ShopService {
             return orderDao.queryAll(username);
         }
         else{
-            return orderDao.queryAllName(name);
+            return orderDao.queryAllName(username,name);
         }
     }
 

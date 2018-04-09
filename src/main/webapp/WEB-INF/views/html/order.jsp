@@ -27,7 +27,7 @@
 <div class="container">
     <div class="panel panel-info">
         <div class="panel-heading text-center">
-            <h3 class="panel-title">面板标题</h3>
+            <h3 class="panel-title">我的订单</h3>
         </div>
         <div class="panel-body">
             <div class="search"><input class="setext" type="text" style="width: 300px;" value="${name}" placeholder="输入商品名">&nbsp;<button id="search" class="btn btn-info">搜索</button></div>

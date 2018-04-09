@@ -32,6 +32,7 @@
         orderlist
         where
         name like concat('%',#{name},'%')
+        and username=#{username}
     </select>
     <delete id="deleteOrder">
         delete from

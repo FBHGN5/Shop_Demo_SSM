@@ -42,6 +42,12 @@
        delete from hotsale
        where id=#{id}
     </delete>
+    <select id="findByName" resultType="HotSale">
+        select
+        *from
+        hotsale
+        where name=#{name}
+    </select>
     <!--<update id="update">-->
       <!--update hotsale-->
       <!--set-->

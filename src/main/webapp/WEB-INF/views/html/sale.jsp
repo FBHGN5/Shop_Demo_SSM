@@ -17,6 +17,7 @@
 </head>  
 <body>
 <form action="/shop/ins" method="post" enctype="multipart/form-data">
+    <h1 style="color: #F30F0F">${error}</h1>
 <input type="hidden" class="input" name="username" value="${sessionScope.username}">
 
 &nbsp;&nbsp;输入商品名:<input class="input" name="name" type="text">

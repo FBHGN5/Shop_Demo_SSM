@@ -23,7 +23,7 @@ public class OrderDaoTest {
 
     @Test
     public void queryAllName() {
-      List<Order> orders=  orderDao.queryAllName("小");
+      List<Order> orders=  orderDao.queryAllName("1","小");
       System.out.println(orders+"DDSDASDA");
     }
 }

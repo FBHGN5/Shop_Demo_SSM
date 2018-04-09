@@ -12,6 +12,6 @@ public interface OrderDao {
     Order sec(int id);
     List<Order> queryAllorder();
     List<Order> queryAll(String username);
-    List<Order> queryAllName(String name);
+    List<Order> queryAllName(@Param("username")String username,@Param("name")String name);
     int deleteOrder(int id);
 }
